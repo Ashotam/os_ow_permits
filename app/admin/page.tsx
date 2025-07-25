@@ -9,16 +9,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Truck, Lock, Mail, Eye, EyeOff } from "lucide-react"
+import { Truck, LogIn, AlertCircle } from "lucide-react"
 import Link from "next/link"
 import { login } from "@/lib/auth"
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [showPassword, setShowPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,97 +26,81 @@ export default function AdminLoginPage() {
     setError("")
 
     try {
-      const user = await login(email, password)
+      const user = login(email, password)
       if (user) {
         router.push("/admin/dashboard")
       } else {
         setError("Invalid email or password")
       }
     } catch (err) {
-      setError("An error occurred. Please try again.")
+      setError("An error occurred during login")
     } finally {
       setIsLoading(false)
     }
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-orange-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8">
         {/* Header */}
-        <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center space-x-2 mb-6">
+        <div className="text-center">
+          <Link href="/" className="flex items-center justify-center space-x-2 mb-6">
             <div className="w-10 h-10 bg-gradient-to-r from-red-600 to-orange-600 rounded-lg flex items-center justify-center">
               <Truck className="w-6 h-6 text-white" />
             </div>
-            <span className="text-2xl font-bold text-gray-900">TruckPermits Pro</span>
+            <span className="text-2xl font-bold text-gray-900">OSO</span>
           </Link>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Admin Login</h1>
-          <p className="text-gray-600">Sign in to manage your blog content</p>
+          <h2 className="text-3xl font-bold text-gray-900">Admin Login</h2>
+          <p className="mt-2 text-sm text-gray-600">Sign in to manage your blog content</p>
         </div>
 
         {/* Login Form */}
-        <Card className="border-0 shadow-xl">
-          <CardHeader className="space-y-1 pb-6">
-            <CardTitle className="text-xl text-center flex items-center justify-center space-x-2">
-              <Lock className="w-5 h-5 text-red-600" />
-              <span>Secure Access</span>
+        <Card className="border-0 shadow-lg">
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <LogIn className="w-5 h-5 text-red-600" />
+              <span>Sign In</span>
             </CardTitle>
-            <CardDescription className="text-center">
-              Enter your credentials to access the admin dashboard
-            </CardDescription>
+            <CardDescription>Enter your credentials to access the admin dashboard</CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-6">
               {error && (
                 <Alert variant="destructive">
+                  <AlertCircle className="h-4 w-4" />
                   <AlertDescription>{error}</AlertDescription>
                 </Alert>
               )}
 
               <div className="space-y-2">
                 <Label htmlFor="email">Email Address</Label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="admin@truckpermitspro.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10 h-12"
-                    required
-                  />
-                </div>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="admin@osowpermits.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="h-11"
+                />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                  <Input
-                    id="password"
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Enter your password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10 pr-10 h-12"
-                    required
-                  />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    className="absolute right-1 top-1 h-10 w-10 p-0"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                  </Button>
-                </div>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="h-11"
+                />
               </div>
 
               <Button
                 type="submit"
-                className="w-full h-12 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700"
+                className="w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 h-11"
                 disabled={isLoading}
               >
                 {isLoading ? "Signing in..." : "Sign In"}
@@ -126,22 +109,20 @@ export default function AdminLoginPage() {
 
             {/* Demo Credentials */}
             <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-              <h3 className="text-sm font-medium text-gray-900 mb-2">Demo Credentials:</h3>
-              <div className="text-sm text-gray-600 space-y-1">
-                <p>
-                  <strong>Email:</strong> admin@truckpermitspro.com
-                </p>
-                <p>
-                  <strong>Password:</strong> admin123
-                </p>
-              </div>
+              <h4 className="text-sm font-medium text-gray-900 mb-2">Demo Credentials:</h4>
+              <p className="text-sm text-gray-600">
+                <strong>Email:</strong> admin@osowpermits.com
+              </p>
+              <p className="text-sm text-gray-600">
+                <strong>Password:</strong> admin123
+              </p>
             </div>
           </CardContent>
         </Card>
 
-        {/* Footer */}
-        <div className="text-center mt-6">
-          <Link href="/" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+        {/* Back to Website */}
+        <div className="text-center">
+          <Link href="/" className="text-sm text-gray-600 hover:text-gray-900">
             ← Back to Website
           </Link>
         </div>

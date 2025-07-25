@@ -2,15 +2,15 @@ export interface BlogPost {
   id: string
   title: string
   slug: string
-  content: string
   excerpt: string
-  coverImage?: string
+  content: string
   author: string
   publishedAt: string
   updatedAt: string
-  tags: string[]
-  category: string
   status: "draft" | "published"
+  category: string
+  tags: string[]
+  coverImage?: string
   readingTime: number
 }
 
@@ -21,248 +21,481 @@ export interface BlogCategory {
   description: string
 }
 
-// Mock data for demonstration
+export const mockCategories: BlogCategory[] = [
+  {
+    id: "1",
+    name: "Permit Guides",
+    slug: "permit-guides",
+    description: "Step-by-step guides for obtaining various permits",
+  },
+  {
+    id: "2",
+    name: "Industry News",
+    slug: "industry-news",
+    description: "Latest updates from the trucking industry",
+  },
+  {
+    id: "3",
+    name: "Regulations",
+    slug: "regulations",
+    description: "Understanding trucking regulations and compliance",
+  },
+  {
+    id: "4",
+    name: "Tips & Tricks",
+    slug: "tips-tricks",
+    description: "Practical advice for truck drivers",
+  },
+]
+
 export const mockPosts: BlogPost[] = [
   {
     id: "1",
-    title: "Complete Guide to Oversize Load Permits in 2024",
-    slug: "complete-guide-oversize-load-permits-2024",
-    content: `# Complete Guide to Oversize Load Permits in 2024
+    title: "Complete Guide to Oversize Load Permits: Everything You Need to Know",
+    slug: "complete-guide-oversize-load-permits",
+    excerpt:
+      "Learn everything about oversize load permits, from application requirements to route planning. This comprehensive guide covers all 50 states and common scenarios.",
+    content: `# Complete Guide to Oversize Load Permits
 
-Getting an oversize load permit can seem daunting, but with the right knowledge and preparation, the process becomes much more manageable. In this comprehensive guide, we'll walk you through everything you need to know about oversize load permits.
+Oversize load permits are essential for transporting cargo that exceeds standard legal dimensions. This comprehensive guide will walk you through everything you need to know about obtaining and managing oversize load permits.
 
 ## What Qualifies as an Oversize Load?
 
-An oversize load is any shipment that exceeds the standard legal dimensions for highway travel. These dimensions vary by state, but generally include:
-
-- **Width**: Over 8.5 feet
-- **Height**: Over 13.5 feet  
-- **Length**: Over 53 feet for trailers
-- **Weight**: Over 80,000 pounds gross vehicle weight
-
-## Types of Oversize Permits
-
-### Single Trip Permits
-Perfect for one-time shipments, these permits are valid for a specific route and timeframe.
-
-### Annual Permits
-Cost-effective for frequent oversize shipments, valid for multiple trips within a year.
-
-### Superload Permits
-Required for extremely large or heavy loads that exceed even oversize limits.
+An oversize load typically exceeds one or more of these standard dimensions:
+- **Width**: Over 8.5 feet (102 inches)
+- **Height**: Over 13.5 feet (varies by state)
+- **Length**: Over 48-53 feet (varies by trailer type)
 
 ## State-by-State Requirements
 
-Each state has unique requirements for oversize load permits. Some key considerations:
+Each state has specific requirements for oversize loads:
 
-- **Texas**: Requires detailed route surveys for loads over certain dimensions
-- **California**: Has strict environmental restrictions in certain areas
-- **Florida**: Requires pilot cars for loads over specific widths
+### California
+- Maximum width: 12 feet without escort
+- Height restrictions vary by route
+- Weekend travel restrictions apply
 
-## Best Practices for Permit Applications
+### Texas  
+- Self-issue permits available online
+- Escort requirements based on dimensions
+- Special routing for certain areas
 
-1. **Plan Ahead**: Apply for permits at least 3-5 business days before travel
-2. **Accurate Measurements**: Double-check all dimensions and weights
-3. **Route Planning**: Use approved routes and avoid restricted areas
-4. **Documentation**: Keep all permits and supporting documents readily available
+## Application Process
+
+1. **Determine Route**: Plan your exact travel route
+2. **Check Restrictions**: Verify state-specific limitations
+3. **Submit Application**: Include vehicle details and load specifications
+4. **Pay Fees**: Costs vary by state and load size
+5. **Receive Permit**: Digital or physical permit issued
+
+## Best Practices
+
+- Apply for permits at least 3-5 business days in advance
+- Keep permits easily accessible during transport
+- Follow designated routes exactly as specified
+- Maintain required escort vehicles when mandated
 
 ## Common Mistakes to Avoid
 
-- Underestimating load dimensions
-- Not checking for seasonal restrictions
-- Failing to coordinate with utility companies
-- Inadequate pilot car arrangements
+- Not checking bridge clearances
+- Ignoring weekend/holiday restrictions  
+- Failing to notify utilities for height clearance
+- Not having backup routes planned
 
-## Conclusion
-
-Proper permit planning is essential for safe and legal oversize load transportation. When in doubt, consult with experienced permit professionals who can guide you through the process and ensure compliance with all regulations.`,
-    excerpt:
-      "Everything you need to know about obtaining oversize load permits, including requirements, types, and best practices for 2024.",
-    coverImage: "/placeholder.svg?height=400&width=800&text=Oversize+Load+Truck",
-    author: "Mike Rodriguez",
+Need help with your oversize load permit? Contact OSOWpermits for expert assistance with applications across all 50 states.`,
+    author: "Mike Johnson",
     publishedAt: "2024-01-15T10:00:00Z",
     updatedAt: "2024-01-15T10:00:00Z",
-    tags: ["oversize permits", "trucking regulations", "transportation"],
-    category: "Permits",
     status: "published",
+    category: "Permit Guides",
+    tags: ["oversize", "permits", "regulations", "compliance"],
+    coverImage: "/placeholder.svg?height=400&width=800",
     readingTime: 8,
   },
   {
     id: "2",
-    title: "Understanding IFTA: A Driver's Guide to Fuel Tax Reporting",
-    slug: "understanding-ifta-drivers-guide-fuel-tax-reporting",
-    content: `# Understanding IFTA: A Driver's Guide to Fuel Tax Reporting
+    title: "IFTA Fuel Tax Permits: A Driver's Complete Guide",
+    slug: "ifta-fuel-tax-permits-guide",
+    excerpt:
+      "Understanding IFTA requirements, quarterly reporting, and how to stay compliant with fuel tax regulations across multiple states.",
+    content: `# IFTA Fuel Tax Permits: A Driver's Complete Guide
 
-The International Fuel Tax Agreement (IFTA) is a cooperative agreement between the lower 48 states of the United States and the Canadian provinces. This guide will help you understand IFTA requirements and compliance.
+The International Fuel Tax Agreement (IFTA) simplifies fuel tax reporting for commercial vehicles operating in multiple jurisdictions. Here's everything you need to know.
 
 ## What is IFTA?
 
-IFTA simplifies the reporting of fuel use by interstate motor carriers. Instead of obtaining fuel permits for each state, qualified motor carriers receive IFTA licenses and fuel decals.
+IFTA is an agreement between U.S. states and Canadian provinces that allows qualified motor vehicles to travel through member jurisdictions under a single fuel tax license.
 
 ## Who Needs IFTA?
 
-You need IFTA if your vehicle:
+You need IFTA registration if your vehicle:
 - Has two axles and a gross vehicle weight over 26,000 pounds, OR
 - Has three or more axles regardless of weight, AND
-- Travels in more than one IFTA jurisdiction
+- Operates in more than one IFTA jurisdiction
 
-## IFTA Reporting Requirements
+## Registration Process
 
-### Quarterly Reports
-- Due by the last day of the month following each quarter
-- Must include detailed fuel purchase and mileage records
-- Late filing results in penalties and interest
+1. **Choose Base Jurisdiction**: Usually your home state
+2. **Complete Application**: Form varies by state
+3. **Pay Registration Fee**: Typically $10-25 annually
+4. **Receive Credentials**: License and decals
 
-### Record Keeping
-Maintain records for four years including:
-- Distance records by jurisdiction
-- Fuel purchase receipts
-- Vehicle maintenance records
+## Record Keeping Requirements
 
-## Tips for IFTA Compliance
+Maintain detailed records of:
+- Distance traveled in each jurisdiction
+- Fuel purchased (receipts required)
+- Vehicle information and routes
 
-1. **Keep Detailed Records**: Document every mile and gallon
-2. **Use Technology**: GPS tracking and fuel cards simplify reporting
-3. **File on Time**: Avoid costly penalties with timely submissions
-4. **Understand Tax Rates**: Rates vary by jurisdiction and fuel type
+## Quarterly Reporting
 
-## Common IFTA Mistakes
+File returns by the last day of the month following each quarter:
+- Q1: April 30
+- Q2: July 31  
+- Q3: October 31
+- Q4: January 31
 
-- Incomplete mileage records
-- Missing fuel receipts
-- Incorrect jurisdiction reporting
-- Late filing penalties
+## Penalties for Non-Compliance
 
-## Conclusion
+- Late filing: $50 or 10% of tax due
+- Failure to file: $100 minimum
+- Operating without valid credentials: Significant fines
 
-IFTA compliance doesn't have to be complicated. With proper record-keeping and understanding of requirements, you can avoid penalties and focus on what matters most - running your business.`,
-    excerpt:
-      "A comprehensive guide to IFTA compliance, reporting requirements, and best practices for interstate truckers.",
-    coverImage: "/placeholder.svg?height=400&width=800&text=IFTA+Fuel+Tax",
-    author: "Sarah Johnson",
+Stay compliant with professional IFTA management from OSOWpermits.`,
+    author: "Sarah Davis",
     publishedAt: "2024-01-10T14:30:00Z",
     updatedAt: "2024-01-10T14:30:00Z",
-    tags: ["IFTA", "fuel tax", "compliance", "reporting"],
-    category: "Compliance",
     status: "published",
+    category: "Permit Guides",
+    tags: ["IFTA", "fuel tax", "compliance", "reporting"],
+    coverImage: "/placeholder.svg?height=400&width=800",
     readingTime: 6,
   },
   {
     id: "3",
-    title: "Top 5 Route Planning Tools for Commercial Drivers",
-    slug: "top-5-route-planning-tools-commercial-drivers",
-    content: `# Top 5 Route Planning Tools for Commercial Drivers
-
-Efficient route planning is crucial for commercial drivers. The right tools can save time, fuel, and help avoid costly violations. Here are our top picks for 2024.
-
-## 1. Rand McNally TND Series
-
-**Best for**: Professional drivers who want dedicated hardware
-**Key Features**:
-- Truck-specific routing
-- Real-time traffic updates
-- Weigh station locations
-- Fuel stop planning
-
-## 2. Garmin dēzl Series
-
-**Best for**: Drivers who need advanced fleet management
-**Key Features**:
-- Custom truck profiles
-- Load-to-dock guidance
-- Driver alerts and warnings
-- Integration with fleet management systems
-
-## 3. Trucker Path App
-
-**Best for**: Community-driven information
-**Key Features**:
-- Real-time truck stop reviews
-- Parking availability
-- Fuel prices
-- Weigh station status
-
-## 4. PC*MILER
-
-**Best for**: Fleet managers and dispatchers
-**Key Features**:
-- Precise mileage calculations
-- Route optimization
-- Toll cost estimation
-- HazMat routing
-
-## 5. Google Maps (Commercial Features)
-
-**Best for**: Budget-conscious drivers
-**Key Features**:
-- Free to use
-- Real-time traffic
-- Street view
-- Integration with other apps
-
-## Choosing the Right Tool
-
-Consider these factors:
-- **Budget**: Free apps vs. premium solutions
-- **Features**: Basic navigation vs. comprehensive fleet management
-- **Hardware**: Smartphone apps vs. dedicated GPS units
-- **Integration**: Compatibility with existing systems
-
-## Pro Tips for Route Planning
-
-1. **Plan Multiple Routes**: Always have backup options
-2. **Check Restrictions**: Verify bridge heights and weight limits
-3. **Consider Traffic Patterns**: Plan around rush hours
-4. **Update Regularly**: Keep your tools and maps current
-
-## Conclusion
-
-The right route planning tool can make a significant difference in your efficiency and profitability. Consider your specific needs and budget when making your choice.`,
+    title: "New DOT Regulations for 2024: What Drivers Need to Know",
+    slug: "new-dot-regulations-2024",
     excerpt:
-      "Discover the best route planning tools for commercial drivers, including features, pricing, and recommendations for different use cases.",
-    coverImage: "/placeholder.svg?height=400&width=800&text=Route+Planning+GPS",
-    author: "David Thompson",
+      "Stay updated on the latest DOT regulations affecting commercial drivers, including ELD requirements, hours of service changes, and safety protocols.",
+    content: `# New DOT Regulations for 2024: What Drivers Need to Know
+
+The Department of Transportation continues to update regulations to improve safety and efficiency. Here are the key changes for 2024.
+
+## Electronic Logging Device (ELD) Updates
+
+### Enhanced Data Requirements
+- Real-time location tracking improvements
+- Better integration with fleet management systems
+- Stricter malfunction reporting protocols
+
+### Compliance Deadlines
+- All carriers must upgrade to certified ELD systems
+- Grace period ends March 31, 2024
+- Penalties increase for non-compliance
+
+## Hours of Service Modifications
+
+### Short-Haul Exception Changes
+- Extended radius from 100 to 150 air miles
+- 14-hour duty period limit maintained
+- Return to work reporting location required
+
+### Sleeper Berth Provisions
+- Split sleeper berth time flexibility
+- 7/3 and 8/2 hour splits allowed
+- Improved rest period calculations
+
+## Safety Protocol Updates
+
+### Pre-Trip Inspection Requirements
+- Enhanced brake system checks
+- Mandatory tire pressure verification
+- Updated cargo securement standards
+
+### Drug and Alcohol Testing
+- Expanded random testing requirements
+- New substances added to screening panels
+- Faster result reporting mandated
+
+## Technology Integration
+
+### Advanced Driver Assistance Systems (ADAS)
+- Collision mitigation systems encouraged
+- Lane departure warnings recommended
+- Automatic emergency braking incentives
+
+## Compliance Tips
+
+1. **Stay Informed**: Subscribe to DOT updates
+2. **Train Regularly**: Update driver training programs
+3. **Document Everything**: Maintain detailed compliance records
+4. **Use Technology**: Leverage compliance management tools
+
+Need help navigating these new regulations? OSOWpermits provides compliance consulting and permit services to keep your operation running smoothly.`,
+    author: "Robert Chen",
     publishedAt: "2024-01-05T09:15:00Z",
     updatedAt: "2024-01-05T09:15:00Z",
-    tags: ["route planning", "GPS", "trucking tools", "navigation"],
-    category: "Technology",
     status: "published",
+    category: "Regulations",
+    tags: ["DOT", "regulations", "compliance", "2024", "ELD"],
+    coverImage: "/placeholder.svg?height=400&width=800",
+    readingTime: 7,
+  },
+  {
+    id: "4",
+    title: "Winter Driving Safety: Essential Tips for Truck Drivers",
+    slug: "winter-driving-safety-tips",
+    excerpt:
+      "Prepare for winter driving conditions with essential safety tips, equipment recommendations, and emergency procedures for professional truck drivers.",
+    content: `# Winter Driving Safety: Essential Tips for Truck Drivers
+
+Winter driving presents unique challenges for commercial truck drivers. Proper preparation and knowledge can prevent accidents and keep you safe on the road.
+
+## Pre-Winter Vehicle Preparation
+
+### Engine and Cooling System
+- Check antifreeze levels and concentration
+- Inspect belts and hoses for wear
+- Test battery and charging system
+- Verify heater and defroster operation
+
+### Tires and Traction
+- Install winter tires or chains as required
+- Check tire pressure regularly (cold weather reduces pressure)
+- Inspect tread depth - minimum 4/32" for steer tires
+- Carry tire chains and practice installation
+
+### Emergency Equipment
+- Extra blankets and warm clothing
+- Emergency food and water supplies
+- Flashlight with extra batteries
+- First aid kit and medications
+- Cell phone charger and backup power
+
+## Driving Techniques
+
+### Speed and Following Distance
+- Reduce speed by 25-50% in snow/ice conditions
+- Increase following distance to 8-10 seconds
+- Use gentle acceleration and braking
+- Avoid sudden steering movements
+
+### Braking and Traction
+- Use engine braking when possible
+- Apply brakes gently and progressively
+- If equipped, use anti-lock braking properly
+- Know how to recover from skids
+
+## Route Planning
+
+### Weather Monitoring
+- Check weather forecasts along entire route
+- Monitor road conditions and closures
+- Have alternate routes planned
+- Consider delaying travel in severe conditions
+
+### Fuel and Rest Stops
+- Keep fuel tanks at least half full
+- Plan stops at truck-friendly locations
+- Allow extra time for delays
+- Know locations of emergency services
+
+## Emergency Procedures
+
+### If Stranded
+1. Stay with your vehicle
+2. Run engine periodically for heat
+3. Keep exhaust pipe clear of snow
+4. Use emergency supplies wisely
+5. Signal for help safely
+
+### Communication
+- Notify dispatch of delays immediately
+- Keep emergency contacts updated
+- Monitor CB radio for road conditions
+- Use GPS tracking for location updates
+
+## State-Specific Requirements
+
+Many states have specific winter driving requirements:
+- **Colorado**: Traction law requirements
+- **California**: Chain requirements on mountain passes
+- **Wyoming**: Possible I-80 closures for light vehicles
+
+Stay safe this winter with proper preparation and professional permit services from OSOWpermits.`,
+    author: "Lisa Martinez",
+    publishedAt: "2023-12-20T11:45:00Z",
+    updatedAt: "2023-12-20T11:45:00Z",
+    status: "published",
+    category: "Tips & Tricks",
+    tags: ["winter driving", "safety", "preparation", "emergency"],
+    coverImage: "/placeholder.svg?height=400&width=800",
+    readingTime: 9,
+  },
+  {
+    id: "5",
+    title: "Understanding Trip Permits: When and How to Apply",
+    slug: "understanding-trip-permits",
+    excerpt:
+      "Learn about trip permits, including when they're required, application processes, and tips for efficient permit management across different states.",
+    content: `# Understanding Trip Permits: When and How to Apply
+
+Trip permits are temporary authorizations that allow commercial vehicles to operate in states where they're not registered. Here's your complete guide.
+
+## When Trip Permits Are Required
+
+### Interstate Operations
+- Operating in states where vehicle isn't registered
+- Temporary operations outside home state
+- One-time deliveries or pickups
+- Emergency situations requiring immediate travel
+
+### Intrastate Operations
+- Vehicles registered in other states
+- Temporary local operations
+- Special event transportation
+- Construction or agricultural work
+
+## Types of Trip Permits
+
+### Single Trip Permits
+- Valid for one specific journey
+- Typically 72-hour duration
+- Most common for occasional operations
+- Cost-effective for infrequent travel
+
+### Multi-Trip Permits
+- Valid for multiple trips within timeframe
+- Usually 30-day duration
+- Better value for regular operations
+- Simplified administration
+
+## Application Requirements
+
+### Vehicle Information
+- VIN and registration details
+- Gross vehicle weight
+- Axle configuration
+- Fuel type and capacity
+
+### Route Details
+- Origin and destination
+- Planned travel dates
+- Specific highways if required
+- Mileage estimates
+
+### Documentation
+- Current registration certificate
+- Proof of insurance
+- Driver's license information
+- Payment method
+
+## State-Specific Considerations
+
+### California
+- Online application system
+- Immediate electronic permits
+- Weight-based fee structure
+- Special requirements for certain routes
+
+### Texas
+- Self-service online portal
+- Instant permit issuance
+- Competitive pricing
+- 24/7 availability
+
+### New York
+- Paper permits still required
+- Business day processing
+- Higher fees for overweight
+- Strict route compliance
+
+## Cost Management Tips
+
+### Bulk Applications
+- Apply for multiple permits together
+- Take advantage of volume discounts
+- Use permit services for efficiency
+- Plan routes to minimize permits needed
+
+### Timing Strategies
+- Apply during business hours when possible
+- Avoid rush periods and holidays
+- Allow extra time for processing
+- Keep backup permits for emergencies
+
+## Common Mistakes to Avoid
+
+1. **Incorrect Weight Declarations**: Always use actual weights
+2. **Route Deviations**: Stick to approved routes exactly
+3. **Expired Permits**: Check expiration dates regularly
+4. **Missing Documentation**: Keep all permits accessible
+5. **Late Applications**: Apply with sufficient lead time
+
+## Digital vs. Paper Permits
+
+### Digital Advantages
+- Instant issuance
+- No risk of loss or damage
+- Easy storage and retrieval
+- Environmental benefits
+
+### Paper Requirements
+- Some states still require physical permits
+- Keep in weatherproof storage
+- Make copies for backup
+- Display as required by law
+
+## Compliance Best Practices
+
+### Record Keeping
+- Maintain permit copies for audits
+- Track expiration dates
+- Document route compliance
+- Store receipts and applications
+
+### Driver Training
+- Ensure drivers understand permit requirements
+- Provide clear route instructions
+- Establish communication protocols
+- Review compliance regularly
+
+Need help managing your trip permits efficiently? OSOWpermits offers comprehensive permit services with expert support across all 50 states.`,
+    author: "David Wilson",
+    publishedAt: "2023-12-15T16:20:00Z",
+    updatedAt: "2023-12-15T16:20:00Z",
+    status: "published",
+    category: "Permit Guides",
+    tags: ["trip permits", "interstate", "compliance", "applications"],
+    coverImage: "/placeholder.svg?height=400&width=800",
+    readingTime: 10,
+  },
+  {
+    id: "6",
+    title: "Draft: Upcoming Changes to Overweight Permit Regulations",
+    slug: "upcoming-overweight-permit-changes",
+    excerpt:
+      "Preview of proposed changes to overweight permit regulations that may affect commercial trucking operations in 2024.",
+    content: `# Upcoming Changes to Overweight Permit Regulations
+
+This is a draft post about upcoming regulatory changes...`,
+    author: "Mike Johnson",
+    publishedAt: "2024-01-20T08:00:00Z",
+    updatedAt: "2024-01-20T08:00:00Z",
+    status: "draft",
+    category: "Regulations",
+    tags: ["overweight", "regulations", "2024", "changes"],
     readingTime: 5,
   },
 ]
 
-export const mockCategories: BlogCategory[] = [
-  {
-    id: "1",
-    name: "Permits",
-    slug: "permits",
-    description: "Everything about trucking permits and regulations",
-  },
-  {
-    id: "2",
-    name: "Compliance",
-    slug: "compliance",
-    description: "Stay compliant with trucking laws and regulations",
-  },
-  {
-    id: "3",
-    name: "Technology",
-    slug: "technology",
-    description: "Latest tools and technology for truckers",
-  },
-  {
-    id: "4",
-    name: "Safety",
-    slug: "safety",
-    description: "Safety tips and best practices for drivers",
-  },
-]
-
-// Utility functions
-export function calculateReadingTime(content: string): number {
-  const wordsPerMinute = 200
-  const words = content.trim().split(/\s+/).length
-  return Math.ceil(words / wordsPerMinute)
+export function formatDate(dateString: string): string {
+  const date = new Date(dateString)
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
 }
 
 export function generateSlug(title: string): string {
@@ -274,35 +507,19 @@ export function generateSlug(title: string): string {
     .trim()
 }
 
-export function formatDate(dateString: string): string {
-  const date = new Date(dateString)
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  })
+export function calculateReadingTime(content: string): number {
+  const wordsPerMinute = 200
+  const wordCount = content.split(/\s+/).length
+  return Math.ceil(wordCount / wordsPerMinute)
 }
 
-export function getPostsByCategory(category: string): BlogPost[] {
-  return mockPosts.filter(
-    (post) => post.category.toLowerCase() === category.toLowerCase() && post.status === "published",
-  )
-}
-
-export function getPostsByTag(tag: string): BlogPost[] {
-  return mockPosts.filter(
-    (post) => post.tags.some((t) => t.toLowerCase() === tag.toLowerCase()) && post.status === "published",
-  )
-}
-
-export function searchPosts(query: string): BlogPost[] {
-  const lowercaseQuery = query.toLowerCase()
-  return mockPosts.filter(
-    (post) =>
-      post.status === "published" &&
-      (post.title.toLowerCase().includes(lowercaseQuery) ||
-        post.excerpt.toLowerCase().includes(lowercaseQuery) ||
-        post.content.toLowerCase().includes(lowercaseQuery) ||
-        post.tags.some((tag) => tag.toLowerCase().includes(lowercaseQuery))),
-  )
+export function getRelatedPosts(currentPost: BlogPost, limit = 3): BlogPost[] {
+  return mockPosts
+    .filter(
+      (post) =>
+        post.id !== currentPost.id &&
+        post.status === "published" &&
+        (post.category === currentPost.category || post.tags.some((tag) => currentPost.tags.includes(tag))),
+    )
+    .slice(0, limit)
 }
