@@ -21,16 +21,19 @@ export default function LandingPage() {
             </div>
 
             <nav className="hidden md:flex items-center space-x-8">
-              <Link href="#services" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Link href="/#services" className="text-gray-600 hover:text-gray-900 transition-colors">
                 Services
               </Link>
-              <Link href="#permits" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Link href="/blog" className="text-gray-600 hover:text-gray-900 transition-colors">
+                Blog
+              </Link>
+              <Link href="/#permits" className="text-gray-600 hover:text-gray-900 transition-colors">
                 Permit Types
               </Link>
-              <Link href="#testimonials" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Link href="/#testimonials" className="text-gray-600 hover:text-gray-900 transition-colors">
                 Reviews
               </Link>
-              <Link href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors">
+              <Link href="/#contact" className="text-gray-600 hover:text-gray-900 transition-colors">
                 Contact
               </Link>
             </nav>
