@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, CheckCircle, Star, Users, Zap, Shield, Globe, Menu } from "lucide-react"
+import { ArrowRight, CheckCircle, Star, Users, Shield, Globe, Menu, Truck, Clock, FileText } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -14,21 +14,21 @@ export default function LandingPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <Zap className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 bg-gradient-to-r from-red-600 to-orange-600 rounded-lg flex items-center justify-center">
+                <Truck className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-gray-900">ReactLand</span>
+              <span className="text-xl font-bold text-gray-900">TruckPermits Pro</span>
             </div>
 
             <nav className="hidden md:flex items-center space-x-8">
-              <Link href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">
-                Features
+              <Link href="#services" className="text-gray-600 hover:text-gray-900 transition-colors">
+                Services
               </Link>
-              <Link href="#about" className="text-gray-600 hover:text-gray-900 transition-colors">
-                About
+              <Link href="#permits" className="text-gray-600 hover:text-gray-900 transition-colors">
+                Permit Types
               </Link>
               <Link href="#testimonials" className="text-gray-600 hover:text-gray-900 transition-colors">
-                Testimonials
+                Reviews
               </Link>
               <Link href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors">
                 Contact
@@ -37,10 +37,10 @@ export default function LandingPage() {
 
             <div className="flex items-center space-x-4">
               <Button variant="ghost" className="hidden sm:inline-flex">
-                Sign In
+                Driver Login
               </Button>
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                Get Started
+              <Button className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700">
+                Get Permits Now
               </Button>
               <Button variant="ghost" size="icon" className="md:hidden">
                 <Menu className="w-5 h-5" />
@@ -51,61 +51,61 @@ export default function LandingPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      <section className="relative overflow-hidden bg-gradient-to-br from-red-50 via-white to-orange-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <Badge variant="secondary" className="bg-blue-100 text-blue-700 hover:bg-blue-200">
-                  🚀 New: React 18 Support
+                <Badge variant="secondary" className="bg-red-100 text-red-700 hover:bg-red-200">
+                  🚛 Fast & Reliable Permit Service
                 </Badge>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                  Build Amazing
-                  <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Get Your Trip
+                  <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
                     {" "}
-                    React Apps
+                    Permits Fast
                   </span>
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Create stunning, responsive web applications with our modern React template. Built with the latest
-                  technologies and best practices.
+                  Professional permit services for truck drivers and fleet operators. Get oversize, overweight, and trip
+                  permits processed quickly with expert support every step of the way.
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                  className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700"
                 >
-                  Start Building
+                  Apply for Permits
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
                 <Button size="lg" variant="outline">
-                  View Demo
+                  View Pricing
                 </Button>
               </div>
 
               <div className="flex items-center space-x-8 text-sm text-gray-600">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-5 h-5 text-green-500" />
-                  <span>Free to use</span>
+                  <span>24/7 Support</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-5 h-5 text-green-500" />
-                  <span>Open source</span>
+                  <span>All 50 States</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-5 h-5 text-green-500" />
-                  <span>TypeScript ready</span>
+                  <span>Same Day Service</span>
                 </div>
               </div>
             </div>
 
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-3xl blur-3xl opacity-20"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-orange-500 rounded-3xl blur-3xl opacity-20"></div>
               <Image
                 src="/placeholder.svg?height=600&width=800"
-                alt="React Dashboard Preview"
+                alt="Truck Driver with Permits"
                 width={800}
                 height={600}
                 className="relative rounded-2xl shadow-2xl"
@@ -115,48 +115,78 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-20 bg-white">
+      {/* Services Section */}
+      <section id="services" className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
-            <Badge variant="secondary" className="bg-purple-100 text-purple-700">
-              Features
+            <Badge variant="secondary" className="bg-orange-100 text-orange-700">
+              Our Services
             </Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Everything you need to build modern apps</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Complete Permit Solutions for Truckers</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Our template comes packed with all the essential features and tools you need to create professional web
-              applications.
+              From single trip permits to annual registrations, we handle all your trucking permit needs with speed and
+              accuracy.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardHeader>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <Zap className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                  <Truck className="w-6 h-6 text-red-600" />
                 </div>
-                <CardTitle>Lightning Fast</CardTitle>
-                <CardDescription>Optimized for performance with code splitting and lazy loading</CardDescription>
+                <CardTitle>Oversize/Overweight Permits</CardTitle>
+                <CardDescription>
+                  Get permits for loads exceeding standard dimensions and weight limits across all states
+                </CardDescription>
               </CardHeader>
             </Card>
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardHeader>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <Shield className="w-6 h-6 text-green-600" />
+                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                  <FileText className="w-6 h-6 text-orange-600" />
                 </div>
-                <CardTitle>Secure by Default</CardTitle>
-                <CardDescription>Built-in security best practices and authentication ready</CardDescription>
+                <CardTitle>Trip Permits</CardTitle>
+                <CardDescription>
+                  Single and multi-trip permits for interstate and intrastate commercial vehicle operations
+                </CardDescription>
               </CardHeader>
             </Card>
 
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardHeader>
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <Globe className="w-6 h-6 text-purple-600" />
+                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                  <Clock className="w-6 h-6 text-red-600" />
                 </div>
-                <CardTitle>Responsive Design</CardTitle>
-                <CardDescription>Mobile-first approach that looks great on all devices</CardDescription>
+                <CardTitle>Rush Processing</CardTitle>
+                <CardDescription>
+                  Emergency permit services with same-day processing for urgent shipments
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                  <Shield className="w-6 h-6 text-orange-600" />
+                </div>
+                <CardTitle>Compliance Support</CardTitle>
+                <CardDescription>
+                  Expert guidance on DOT regulations and permit requirements for safe operations
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                  <Globe className="w-6 h-6 text-red-600" />
+                </div>
+                <CardTitle>Multi-State Coverage</CardTitle>
+                <CardDescription>
+                  Comprehensive permit services across all 50 states with local expertise
+                </CardDescription>
               </CardHeader>
             </Card>
 
@@ -165,28 +195,10 @@ export default function LandingPage() {
                 <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
                   <Users className="w-6 h-6 text-orange-600" />
                 </div>
-                <CardTitle>Team Collaboration</CardTitle>
-                <CardDescription>Built for teams with proper code organization and documentation</CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                  <Star className="w-6 h-6 text-red-600" />
-                </div>
-                <CardTitle>Modern Stack</CardTitle>
-                <CardDescription>React 18, TypeScript, Tailwind CSS, and more cutting-edge tools</CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                  <CheckCircle className="w-6 h-6 text-indigo-600" />
-                </div>
-                <CardTitle>Easy to Customize</CardTitle>
-                <CardDescription>Clean, well-documented code that's easy to modify and extend</CardDescription>
+                <CardTitle>Fleet Management</CardTitle>
+                <CardDescription>
+                  Dedicated account management for trucking companies and fleet operators
+                </CardDescription>
               </CardHeader>
             </Card>
           </div>
@@ -194,42 +206,44 @@ export default function LandingPage() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-gray-50">
+      <section id="permits" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <Badge variant="secondary" className="bg-blue-100 text-blue-700">
-                About ReactLand
+              <Badge variant="secondary" className="bg-red-100 text-red-700">
+                Why Choose Us
               </Badge>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Built by developers, for developers</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+                Trusted by thousands of drivers nationwide
+              </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                ReactLand is more than just a template - it's a complete development experience designed to help you
-                build better React applications faster. We've carefully crafted every component and feature based on
-                years of real-world development experience.
+                With over a decade of experience in the trucking industry, we understand the challenges drivers face on
+                the road. Our permit specialists work around the clock to ensure your permits are processed accurately
+                and delivered on time.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">Production-ready components</span>
+                  <span className="text-gray-700">Licensed permit agents in all states</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">Comprehensive documentation</span>
+                  <span className="text-gray-700">Average processing time under 2 hours</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">Regular updates and support</span>
+                  <span className="text-gray-700">24/7 customer support hotline</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">Active community</span>
+                  <span className="text-gray-700">Money-back guarantee on service</span>
                 </div>
               </div>
             </div>
             <div className="relative">
               <Image
                 src="/placeholder.svg?height=500&width=600"
-                alt="Development Team"
+                alt="Professional Truck Driver"
                 width={600}
                 height={500}
                 className="rounded-2xl shadow-xl"
@@ -243,11 +257,13 @@ export default function LandingPage() {
       <section id="testimonials" className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
-            <Badge variant="secondary" className="bg-green-100 text-green-700">
-              Testimonials
+            <Badge variant="secondary" className="bg-orange-100 text-orange-700">
+              Driver Reviews
             </Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Loved by developers worldwide</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">See what developers are saying about ReactLand</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">What truckers are saying about us</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Real feedback from professional drivers across America
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -259,16 +275,16 @@ export default function LandingPage() {
                   ))}
                 </div>
                 <p className="text-gray-600 mb-4">
-                  "ReactLand saved me weeks of development time. The components are beautifully designed and the code
-                  quality is exceptional."
+                  "These guys saved my bacon when I needed an emergency overweight permit at 2 AM. Got it processed in
+                  45 minutes. Outstanding service!"
                 </p>
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold">
-                    JS
+                  <div className="w-10 h-10 bg-gradient-to-r from-red-400 to-orange-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    MR
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">John Smith</p>
-                    <p className="text-sm text-gray-600">Frontend Developer</p>
+                    <p className="font-semibold text-gray-900">Mike Rodriguez</p>
+                    <p className="text-sm text-gray-600">Owner-Operator, Texas</p>
                   </div>
                 </div>
               </CardContent>
@@ -282,16 +298,16 @@ export default function LandingPage() {
                   ))}
                 </div>
                 <p className="text-gray-600 mb-4">
-                  "The best React template I've ever used. Clean code, great documentation, and amazing support from the
-                  team."
+                  "Been using them for 3 years for all our fleet permits. Never had a single issue. Professional, fast,
+                  and reliable every time."
                 </p>
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
-                    MJ
+                  <div className="w-10 h-10 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    SJ
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Maria Johnson</p>
-                    <p className="text-sm text-gray-600">Full Stack Developer</p>
+                    <p className="font-semibold text-gray-900">Sarah Johnson</p>
+                    <p className="text-sm text-gray-600">Fleet Manager, California</p>
                   </div>
                 </div>
               </CardContent>
@@ -305,16 +321,16 @@ export default function LandingPage() {
                   ))}
                 </div>
                 <p className="text-gray-600 mb-4">
-                  "ReactLand helped us launch our product 3x faster. The components are production-ready and highly
-                  customizable."
+                  "The customer service is top-notch. They walk you through everything and make sure you understand all
+                  the requirements. Highly recommend!"
                 </p>
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center text-white font-semibold">
-                    DW
+                  <div className="w-10 h-10 bg-gradient-to-r from-red-400 to-orange-500 rounded-full flex items-center justify-center text-white font-semibold">
+                    DT
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">David Wilson</p>
-                    <p className="text-sm text-gray-600">Tech Lead</p>
+                    <p className="font-semibold text-gray-900">David Thompson</p>
+                    <p className="text-sm text-gray-600">Long-Haul Driver, Florida</p>
                   </div>
                 </div>
               </CardContent>
@@ -324,25 +340,25 @@ export default function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section id="contact" className="py-20 bg-gradient-to-r from-red-600 to-orange-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-3xl mx-auto space-y-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">Ready to build something amazing?</h2>
-            <p className="text-xl text-blue-100">
-              Join thousands of developers who are already building with ReactLand. Get started today and see the
-              difference.
+            <h2 className="text-3xl sm:text-4xl font-bold text-white">Ready to hit the road with confidence?</h2>
+            <p className="text-xl text-red-100">
+              Join thousands of drivers who trust us with their permit needs. Get started today and experience the
+              difference professional service makes.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
               <Input
-                placeholder="Enter your email"
+                placeholder="Enter your phone number"
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/70"
               />
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
-                Get Started
+              <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100">
+                Get Quote Now
               </Button>
             </div>
-            <p className="text-sm text-blue-200">
-              No spam, unsubscribe at any time. By signing up, you agree to our terms.
+            <p className="text-sm text-red-200">
+              Call us 24/7 at (555) 123-PERMIT or fill out the form above for instant quotes.
             </p>
           </div>
         </div>
@@ -354,35 +370,37 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                  <Zap className="w-5 h-5 text-white" />
+                <div className="w-8 h-8 bg-gradient-to-r from-red-600 to-orange-600 rounded-lg flex items-center justify-center">
+                  <Truck className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold">ReactLand</span>
+                <span className="text-xl font-bold">TruckPermits Pro</span>
               </div>
-              <p className="text-gray-400">Building the future of React development, one component at a time.</p>
+              <p className="text-gray-400">
+                Your trusted partner for professional trucking permit services nationwide.
+              </p>
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4">Product</h3>
+              <h3 className="font-semibold mb-4">Permit Services</h3>
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Features
+                    Oversize Permits
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Documentation
+                    Overweight Permits
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Examples
+                    Trip Permits
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Pricing
+                    Annual Permits
                   </Link>
                 </li>
               </ul>
@@ -393,17 +411,17 @@ export default function LandingPage() {
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    About
+                    About Us
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Blog
+                    Driver Resources
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Careers
+                    State Requirements
                   </Link>
                 </li>
                 <li>
@@ -419,22 +437,22 @@ export default function LandingPage() {
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Help Center
+                    24/7 Hotline
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Community
+                    Driver Portal
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Status
+                    FAQ
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
-                    Privacy
+                    Terms of Service
                   </Link>
                 </li>
               </ul>
@@ -442,16 +460,16 @@ export default function LandingPage() {
           </div>
 
           <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-gray-400">© {new Date().getFullYear()} ReactLand. All rights reserved.</p>
+            <p className="text-gray-400">© {new Date().getFullYear()} TruckPermits Pro. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 sm:mt-0">
               <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                Twitter
+                Facebook
               </Link>
               <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                GitHub
+                LinkedIn
               </Link>
               <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                Discord
+                YouTube
               </Link>
             </div>
           </div>
