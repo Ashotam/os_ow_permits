@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CalendarDays, Clock, User, ArrowRight, Menu, Truck, Phone, Mail, MapPin } from "lucide-react"
+import { CalendarDays, Clock, User, ArrowRight, Menu, Phone, Mail, MapPin } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -90,10 +90,13 @@ export default function BlogPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-red-600 to-orange-600 rounded-lg flex items-center justify-center">
-                <Truck className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold text-gray-900">OSOWpermits</span>
+              <Image
+                src="/osow-logo-horizontal.webp"
+                alt="OSOW Permits Logo"
+                width={180}
+                height={60}
+                className="h-12 w-auto"
+              />
             </Link>
 
             <nav className="hidden md:flex items-center space-x-8">
@@ -305,10 +308,13 @@ export default function BlogPage() {
             {/* Company Info */}
             <div>
               <Link href="/" className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-red-600 to-orange-600 rounded-lg flex items-center justify-center">
-                  <Truck className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold text-gray-900">OSOWpermits</span>
+                <Image
+                  src="/osow-logo-horizontal.webp"
+                  alt="OSOW Permits Logo"
+                  width={150}
+                  height={50}
+                  className="h-10 w-auto"
+                />
               </Link>
               <p className="text-gray-600 mb-4">
                 Your trusted partner for all your trucking permit needs. Licensed and bonded in all 50 states.

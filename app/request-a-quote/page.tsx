@@ -9,8 +9,9 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Truck, Clock, Shield, Phone, Mail, MapPin, CheckCircle, Menu } from "lucide-react"
+import { Clock, Shield, Phone, Mail, MapPin, CheckCircle, Menu } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 
 export default function RequestQuotePage() {
@@ -41,10 +42,13 @@ export default function RequestQuotePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-red-600 to-orange-600 rounded-lg flex items-center justify-center">
-                <Truck className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold text-gray-900">OSOWpermits</span>
+              <Image
+                src="/osow-logo-horizontal.webp"
+                alt="OSOW Permits Logo"
+                width={180}
+                height={60}
+                className="h-12 w-auto"
+              />
             </Link>
 
             <nav className="hidden md:flex items-center space-x-8">
@@ -330,10 +334,13 @@ export default function RequestQuotePage() {
             {/* Company Info */}
             <div>
               <Link href="/" className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-red-600 to-orange-600 rounded-lg flex items-center justify-center">
-                  <Truck className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold text-gray-900">OSOWpermits</span>
+                <Image
+                  src="/osow-logo-horizontal.webp"
+                  alt="OSOW Permits Logo"
+                  width={150}
+                  height={50}
+                  className="h-10 w-auto"
+                />
               </Link>
               <p className="text-gray-600 mb-4">
                 Your trusted partner for all your trucking permit needs. Licensed and bonded in all 50 states.
@@ -379,7 +386,7 @@ export default function RequestQuotePage() {
                 </Link>
                 <Link href="#" className="text-gray-500 hover:text-gray-900">
                   <svg fill="currentColor" className="w-5 h-5" viewBox="0 0 24 24">
-                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.893-.957-2.178-1.555-3.594-1.555-2.71,0-4.92 2.211-4.92 4.92 0 .39.045.765.127 1.124C7.691 8.341 4.066 6.215 1.613 3.94c-.422.724-.665 1.566-.665 2.479 0 1.71 .87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.372 3.946 4.827-.413.111-.849.171-1.304.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.212 7.548 2.212 9.058 0 14.01-7.506 14.01-14.01 0-.213-.005-.426-.015-.637.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"></path>
+                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.893-.957-2.178-1.555-3.594-1.555-2.71,0-4.92 2.211-4.92 4.92 0 .39.045.765.127 1.124C7.691 8.341 4.066 6.215 1.613 3.94c-.422.724-.665 1.566-.665 2.479 0 1.71 .87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.372 3.946 4.827-.413.111-.849.171-1.304.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.212 7.548 2.212 9.058 0 14.01-7.506 14.01-14.01 0-.213-.005-.426-.015-.637.961-.689 1.8-1.56 2.46-2.548l-.047-.20z"></path>
                   </svg>
                 </Link>
               </div>
