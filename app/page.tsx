@@ -84,9 +84,11 @@ export default function LandingPage() {
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
-                <Button size="lg" variant="outline">
-                  Request a Quote
-                </Button>
+                <Link href="/request-a-quote">
+                  <Button size="lg" variant="outline">
+                    Request a Quote
+                  </Button>
+                </Link>
               </div>
 
               <div className="flex items-center space-x-8 text-sm text-gray-600">

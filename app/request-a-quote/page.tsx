@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Truck, Clock, Shield, Phone, Mail, MapPin, CheckCircle } from "lucide-react"
+import { Truck, Clock, Shield, Phone, Mail, MapPin, CheckCircle, Menu } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -20,8 +20,6 @@ export default function RequestQuotePage() {
     companyName: "",
     email: "",
     phone: "",
-    startZip: "",
-    deliveryZip: "",
     permitType: "",
     additionalDetails: "",
   })
@@ -39,7 +37,7 @@ export default function RequestQuotePage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="border-b bg-white sticky top-0 z-50">
+      <header className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <Link href="/" className="flex items-center space-x-2">
@@ -49,10 +47,32 @@ export default function RequestQuotePage() {
               <span className="text-xl font-bold text-gray-900">TruckPermits Pro</span>
             </Link>
 
-            <Link href="/" className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors">
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back to Home</span>
-            </Link>
+            <nav className="hidden md:flex items-center space-x-8">
+              <Link href="/#services" className="text-gray-600 hover:text-gray-900 transition-colors">
+                Services
+              </Link>
+              <Link href="/#permits" className="text-gray-600 hover:text-gray-900 transition-colors">
+                Permit Types
+              </Link>
+              <Link href="/#testimonials" className="text-gray-600 hover:text-gray-900 transition-colors">
+                Reviews
+              </Link>
+              <Link href="/#contact" className="text-gray-600 hover:text-gray-900 transition-colors">
+                Contact
+              </Link>
+            </nav>
+
+            <div className="flex items-center space-x-4">
+              <Button variant="ghost" className="hidden sm:inline-flex">
+                Apply for Permits
+              </Button>
+              <Button className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700">
+                Call Us
+              </Button>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="w-5 h-5" />
+              </Button>
+            </div>
           </div>
         </div>
       </header>
@@ -154,39 +174,6 @@ export default function RequestQuotePage() {
                           required
                           className="h-11 border-gray-300 focus:border-red-500 focus:ring-red-500"
                         />
-                      </div>
-                    </div>
-
-                    {/* Route Information */}
-                    <div className="pt-4 border-t border-gray-200">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Route Information</h3>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="startZip" className="text-sm font-medium text-gray-700">
-                            Start Zip Code *
-                          </Label>
-                          <Input
-                            id="startZip"
-                            placeholder="77001"
-                            value={formData.startZip}
-                            onChange={(e) => handleInputChange("startZip", e.target.value)}
-                            required
-                            className="h-11 border-gray-300 focus:border-red-500 focus:ring-red-500"
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="deliveryZip" className="text-sm font-medium text-gray-700">
-                            Delivery Zip Code *
-                          </Label>
-                          <Input
-                            id="deliveryZip"
-                            placeholder="80202"
-                            value={formData.deliveryZip}
-                            onChange={(e) => handleInputChange("deliveryZip", e.target.value)}
-                            required
-                            className="h-11 border-gray-300 focus:border-red-500 focus:ring-red-500"
-                          />
-                        </div>
                       </div>
                     </div>
 
