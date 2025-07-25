@@ -36,9 +36,11 @@ export default function LandingPage() {
             </nav>
 
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" className="hidden sm:inline-flex">
-                Apply for Permits
-              </Button>
+              <Link href="/request-a-quote">
+                <Button variant="ghost" className="hidden sm:inline-flex">
+                  Apply for Permits
+                </Button>
+              </Link>
               <Button className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700">
                 Call Us
               </Button>
@@ -73,13 +75,15 @@ export default function LandingPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700"
-                >
-                  Call Us
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
+                <Link href="/request-a-quote">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700"
+                  >
+                    Call Us
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
                 <Button size="lg" variant="outline">
                   Request a Quote
                 </Button>
