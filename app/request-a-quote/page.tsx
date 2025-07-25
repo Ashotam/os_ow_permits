@@ -326,7 +326,7 @@ export default function RequestQuotePage() {
       {/* Footer */}
       <footer className="bg-gray-50 border-t">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Company Info */}
             <div>
               <Link href="/" className="flex items-center space-x-2 mb-4">
@@ -412,38 +412,6 @@ export default function RequestQuotePage() {
                 <li>
                   <Link href="/#contact" className="text-gray-600 hover:text-gray-900 transition-colors">
                     Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Services */}
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Services</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
-                    Oversize Load Permits
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
-                    Overweight Load Permits
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
-                    Trip & Fuel Permits
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
-                    Annual Permits
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
-                    24/7 Support
                   </Link>
                 </li>
               </ul>
