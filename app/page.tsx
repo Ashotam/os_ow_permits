@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, CheckCircle, Star, Users, Shield, Globe, Menu, Truck, Clock, FileText } from "lucide-react"
+import { ArrowRight, CheckCircle, Star, Users, Globe, Menu, Truck, FileText } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -163,11 +163,12 @@ export default function LandingPage() {
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                  <Clock className="w-6 h-6 text-red-600" />
+                  <FileText className="w-6 h-6 text-red-600" />
                 </div>
-                <CardTitle>Rush Processing</CardTitle>
+                <CardTitle>Fuel Permits (IFTA, IRP, etc.)</CardTitle>
                 <CardDescription>
-                  Emergency permit services with same-day processing for urgent shipments
+                  International Fuel Tax Agreement and International Registration Plan permits for multi-state
+                  operations
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -175,11 +176,11 @@ export default function LandingPage() {
             <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                  <Shield className="w-6 h-6 text-orange-600" />
+                  <FileText className="w-6 h-6 text-orange-600" />
                 </div>
-                <CardTitle>Compliance Support</CardTitle>
+                <CardTitle>Temporary Tax Permits</CardTitle>
                 <CardDescription>
-                  Expert guidance on DOT regulations and permit requirements for safe operations
+                  Short-term tax permits for temporary operations and special circumstances across jurisdictions
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -360,7 +361,7 @@ export default function LandingPage() {
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/70"
               />
               <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100">
-                Get Quote Now
+                Order a Call Back
               </Button>
             </div>
             <p className="text-sm text-red-200">

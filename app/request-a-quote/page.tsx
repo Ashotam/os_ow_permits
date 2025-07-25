@@ -63,9 +63,6 @@ export default function RequestQuotePage() {
             </nav>
 
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" className="hidden sm:inline-flex">
-                Apply for Permits
-              </Button>
               <Button className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700">
                 Call Us
               </Button>
@@ -325,6 +322,157 @@ export default function RequestQuotePage() {
           </div>
         </div>
       </div>
+      <footer className="bg-gray-50 border-t">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Company Info */}
+            <div>
+              <Link href="/" className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-gradient-to-r from-red-600 to-orange-600 rounded-lg flex items-center justify-center">
+                  <Truck className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-xl font-bold text-gray-900">TruckPermits Pro</span>
+              </Link>
+              <p className="mt-4 text-gray-600">
+                Your trusted partner for all your trucking permit needs. Licensed and bonded in all 50 states.
+              </p>
+              <div className="mt-4 flex space-x-4">
+                <Link href="#" className="text-gray-500 hover:text-gray-900">
+                  <svg
+                    fill="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                  </svg>
+                </Link>
+                <Link href="#" className="text-gray-500 hover:text-gray-900">
+                  <svg
+                    fill="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                  </svg>
+                </Link>
+                <Link href="#" className="text-gray-500 hover:text-gray-900">
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                  >
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                  </svg>
+                </Link>
+                <Link href="#" className="text-gray-500 hover:text-gray-900">
+                  <svg fill="currentColor" className="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.893-.957-2.178-1.555-3.594-1.555-2.71,0-4.92 2.211-4.92 4.92 0 .39.045.765.127 1.124C7.691 8.341 4.066 6.215 1.613 3.94c-.422.724-.665 1.566-.665 2.479 0 1.71 .87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.372 3.946 4.827-.413.111-.849.171-1.304.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.212 7.548 2.212 9.058 0 14.01-7.506 14.01-14.01 0-.213-.005-.426-.015-.637.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"></path>
+                  </svg>
+                </Link>
+              </div>
+            </div>
+
+            {/* Services */}
+            <div>
+              <h3 className="font-semibold text-gray-900">Services</h3>
+              <ul className="mt-4 space-y-2">
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900">
+                    Oversize Load Permits
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900">
+                    Overweight Load Permits
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900">
+                    Trip & Fuel Permits
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900">
+                    Annual Permits
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900">
+                    24/7 Support
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="font-semibold text-gray-900">Quick Links</h3>
+              <ul className="mt-4 space-y-2">
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900">
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900">
+                    Request a Quote
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900">
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900">
+                    Privacy Policy
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h3 className="font-semibold text-gray-900">Contact Us</h3>
+              <ul className="mt-4 space-y-2">
+                <li className="flex items-center space-x-2">
+                  <MapPin className="w-4 h-4 text-gray-500" />
+                  <span className="text-gray-600">123 Trucking Lane, Suite 100, Anytown, USA</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <Phone className="w-4 h-4 text-gray-500" />
+                  <span className="text-gray-600">(555) 123-4567</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <Mail className="w-4 h-4 text-gray-500" />
+                  <span className="text-gray-600">info@truckpermitspro.com</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="mt-12 text-center">
+            <p className="text-gray-500">&copy; {new Date().getFullYear()} TruckPermits Pro. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
