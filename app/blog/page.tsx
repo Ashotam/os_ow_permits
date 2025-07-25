@@ -27,9 +27,6 @@ export default function BlogPage() {
             </Link>
 
             <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">
-                Home
-              </Link>
               <Link href="/#services" className="text-gray-600 hover:text-gray-900 transition-colors">
                 Services
               </Link>
@@ -381,11 +378,6 @@ export default function BlogPage() {
             <div>
               <h3 className="font-semibold text-gray-900 mb-4">Navigation</h3>
               <ul className="space-y-2">
-                <li>
-                  <Link href="/" className="text-gray-600 hover:text-gray-900">
-                    Home
-                  </Link>
-                </li>
                 <li>
                   <Link href="/#about" className="text-gray-600 hover:text-gray-900">
                     About
