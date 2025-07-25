@@ -1,90 +1,20 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { CalendarDays, Clock, User, ArrowRight, Menu, Phone, Mail, MapPin } from "lucide-react"
+import { Search, Calendar, Clock, User, ArrowRight, Tag, Menu, Phone, Mail, MapPin } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-
-// Mock blog data
-const blogPosts = [
-  {
-    id: 1,
-    title: "Understanding Oversize Load Permits: A Complete Guide for Truckers",
-    excerpt:
-      "Learn everything you need to know about oversize load permits, including requirements, costs, and application processes across different states.",
-    author: "Mike Johnson",
-    date: "2024-01-15",
-    readTime: "8 min read",
-    category: "Permits",
-    image: "/placeholder.svg?height=300&width=500",
-    slug: "understanding-oversize-load-permits",
-  },
-  {
-    id: 2,
-    title: "State-by-State Guide to Trip Permit Requirements",
-    excerpt:
-      "Navigate the complex world of trip permits with our comprehensive state-by-state breakdown of requirements, fees, and processing times.",
-    author: "Sarah Davis",
-    date: "2024-01-12",
-    readTime: "12 min read",
-    category: "Regulations",
-    image: "/placeholder.svg?height=300&width=500",
-    slug: "state-by-state-trip-permit-guide",
-  },
-  {
-    id: 3,
-    title: "How to Avoid Common Permit Violations and Fines",
-    excerpt:
-      "Protect your business from costly violations with these essential tips for staying compliant with permit regulations.",
-    author: "David Rodriguez",
-    date: "2024-01-10",
-    readTime: "6 min read",
-    category: "Compliance",
-    image: "/placeholder.svg?height=300&width=500",
-    slug: "avoid-permit-violations-fines",
-  },
-  {
-    id: 4,
-    title: "The Future of Digital Permits in the Trucking Industry",
-    excerpt:
-      "Explore how digital transformation is revolutionizing the permit application process and what it means for truckers.",
-    author: "Lisa Chen",
-    date: "2024-01-08",
-    readTime: "10 min read",
-    category: "Technology",
-    image: "/placeholder.svg?height=300&width=500",
-    slug: "future-digital-permits-trucking",
-  },
-  {
-    id: 5,
-    title: "Emergency Permit Services: When You Need Permits Fast",
-    excerpt: "Learn about emergency permit services and how to get the permits you need when time is critical.",
-    author: "Tom Wilson",
-    date: "2024-01-05",
-    readTime: "5 min read",
-    category: "Services",
-    image: "/placeholder.svg?height=300&width=500",
-    slug: "emergency-permit-services",
-  },
-  {
-    id: 6,
-    title: "Cost-Effective Strategies for Fleet Permit Management",
-    excerpt:
-      "Discover proven strategies to reduce permit costs and streamline the permit management process for your fleet.",
-    author: "Jennifer Martinez",
-    date: "2024-01-03",
-    readTime: "9 min read",
-    category: "Fleet Management",
-    image: "/placeholder.svg?height=300&width=500",
-    slug: "cost-effective-fleet-permit-management",
-  },
-]
-
-const categories = ["All", "Permits", "Regulations", "Compliance", "Technology", "Services", "Fleet Management"]
+import { mockPosts, mockCategories, formatDate } from "@/lib/blog"
 
 export default function BlogPage() {
+  const publishedPosts = mockPosts.filter((post) => post.status === "published")
+  const featuredPost = publishedPosts[0]
+  const recentPosts = publishedPosts.slice(1, 4)
+  const latestPosts = publishedPosts.slice(0, 3)
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -134,177 +64,261 @@ export default function BlogPage() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-red-50 via-white to-orange-50 py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-6">
-            <Badge variant="secondary" className="bg-red-100 text-red-700">
-              📚 Trucking Knowledge Hub
-            </Badge>
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
-              Trucking Permits
-              <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
-                {" "}
-                Blog & Resources
-              </span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Stay informed with the latest insights, regulations, and best practices in the trucking permit industry.
-              Expert advice from seasoned professionals to help you navigate the road ahead.
-            </p>
-          </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Blog Header */}
+        <div className="text-center mb-12">
+          <Badge variant="secondary" className="bg-red-100 text-red-700 mb-4">
+            OSOWpermits Blog
+          </Badge>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Trucking Industry Insights</h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Expert advice, industry updates, and practical guides for professional truck drivers and fleet operators.
+          </p>
         </div>
-      </section>
 
-      {/* Category Filter */}
-      <section className="py-8 border-b">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap gap-2 justify-center">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={category === "All" ? "default" : "outline"}
-                size="sm"
-                className={category === "All" ? "bg-red-600 hover:bg-red-700" : ""}
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Post */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Featured Article</h2>
-            <p className="text-gray-600">Our most popular and comprehensive guide</p>
-          </div>
-
-          <Card className="overflow-hidden border-0 shadow-xl">
-            <div className="grid lg:grid-cols-2 gap-0">
-              <div className="relative h-64 lg:h-full">
-                <Image
-                  src={blogPosts[0].image || "/placeholder.svg"}
-                  alt={blogPosts[0].title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-8 lg:p-12 flex flex-col justify-center">
-                <Badge variant="secondary" className="bg-orange-100 text-orange-700 w-fit mb-4">
-                  {blogPosts[0].category}
-                </Badge>
-                <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">{blogPosts[0].title}</h3>
-                <p className="text-gray-600 mb-6 text-lg">{blogPosts[0].excerpt}</p>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center space-x-4 text-sm text-gray-500">
-                    <div className="flex items-center space-x-1">
-                      <User className="w-4 h-4" />
-                      <span>{blogPosts[0].author}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <CalendarDays className="w-4 h-4" />
-                      <span>{new Date(blogPosts[0].date).toLocaleDateString()}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Clock className="w-4 h-4" />
-                      <span>{blogPosts[0].readTime}</span>
+        <div className="grid lg:grid-cols-4 gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-3">
+            {/* Featured Post */}
+            {featuredPost && (
+              <Card className="mb-12 border-0 shadow-lg overflow-hidden">
+                <div className="relative h-64 sm:h-80">
+                  <Image
+                    src={featuredPost.coverImage || "/placeholder.svg?height=320&width=800"}
+                    alt={featuredPost.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6 text-white">
+                    <Badge className="bg-red-600 hover:bg-red-700 mb-3">Featured</Badge>
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-2 leading-tight">{featuredPost.title}</h2>
+                    <p className="text-gray-200 mb-4 line-clamp-2">{featuredPost.excerpt}</p>
+                    <div className="flex items-center space-x-4 text-sm">
+                      <div className="flex items-center space-x-1">
+                        <User className="w-4 h-4" />
+                        <span>{featuredPost.author}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Calendar className="w-4 h-4" />
+                        <span>{formatDate(featuredPost.publishedAt)}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Clock className="w-4 h-4" />
+                        <span>{featuredPost.readingTime} min read</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <Link href={`/blog/${blogPosts[0].slug}`}>
-                  <Button
-                    size="lg"
-                    className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700"
-                  >
-                    Read Full Article
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* Blog Posts Grid */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Latest Articles</h2>
-            <p className="text-gray-600">Stay up to date with the latest trucking permit news and insights</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.slice(1).map((post) => (
-              <Card key={post.id} className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="relative h-48">
-                  <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
-                </div>
-                <CardHeader className="pb-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge variant="secondary" className="bg-red-100 text-red-700">
-                      {post.category}
-                    </Badge>
-                    <div className="flex items-center space-x-1 text-xs text-gray-500">
-                      <Clock className="w-3 h-3" />
-                      <span>{post.readTime}</span>
-                    </div>
-                  </div>
-                  <CardTitle className="text-lg leading-tight hover:text-red-600 transition-colors">
-                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <CardDescription className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</CardDescription>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2 text-sm text-gray-500">
-                      <User className="w-4 h-4" />
-                      <span>{post.author}</span>
-                    </div>
-                    <Link href={`/blog/${post.slug}`}>
-                      <Button variant="ghost" size="sm" className="text-red-600 hover:text-red-700 hover:bg-red-50">
-                        Read More
-                        <ArrowRight className="ml-1 w-3 h-3" />
-                      </Button>
-                    </Link>
-                  </div>
+                <CardContent className="p-6">
+                  <Link href={`/blog/${featuredPost.slug}`}>
+                    <Button className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700">
+                      Read Full Article
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+            )}
 
-      {/* Newsletter Signup */}
-      <section className="py-16 bg-gradient-to-r from-red-600 to-orange-600">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-2xl mx-auto space-y-6">
-            <h2 className="text-3xl font-bold text-white">Stay Updated</h2>
-            <p className="text-xl text-red-100">
-              Get the latest trucking permit news, regulations, and expert tips delivered to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white focus:outline-none"
-              />
-              <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100 px-8">
-                Subscribe
-              </Button>
+            {/* Recent Posts Grid */}
+            <div className="space-y-8">
+              <h2 className="text-2xl font-bold text-gray-900">Latest Articles</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                {recentPosts.map((post) => (
+                  <Card key={post.id} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="relative h-48">
+                      <Image
+                        src={post.coverImage || "/placeholder.svg?height=192&width=400"}
+                        alt={post.title}
+                        fill
+                        className="object-cover rounded-t-lg"
+                      />
+                    </div>
+                    <CardHeader className="pb-3">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <Badge variant="outline" className="text-xs">
+                          {post.category}
+                        </Badge>
+                        <span className="text-xs text-gray-500">{formatDate(post.publishedAt)}</span>
+                      </div>
+                      <CardTitle className="text-lg leading-tight hover:text-red-600 transition-colors">
+                        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                      </CardTitle>
+                      <CardDescription className="line-clamp-3">{post.excerpt}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-4 text-sm text-gray-500">
+                          <div className="flex items-center space-x-1">
+                            <User className="w-3 h-3" />
+                            <span>{post.author}</span>
+                          </div>
+                          <div className="flex items-center space-x-1">
+                            <Clock className="w-3 h-3" />
+                            <span>{post.readingTime} min</span>
+                          </div>
+                        </div>
+                        <Link href={`/blog/${post.slug}`}>
+                          <Button variant="ghost" size="sm">
+                            Read More
+                            <ArrowRight className="ml-1 w-3 h-3" />
+                          </Button>
+                        </Link>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
-            <p className="text-sm text-red-200">Join 5,000+ truckers who trust our insights. Unsubscribe anytime.</p>
+
+            {/* All Posts List */}
+            <div className="mt-12 space-y-6">
+              <h2 className="text-2xl font-bold text-gray-900">All Articles</h2>
+              <div className="space-y-6">
+                {publishedPosts.map((post) => (
+                  <Card key={post.id} className="border-0 shadow-md hover:shadow-lg transition-shadow">
+                    <div className="grid md:grid-cols-4 gap-6 p-6">
+                      <div className="relative h-32 md:h-24">
+                        <Image
+                          src={post.coverImage || "/placeholder.svg?height=96&width=160"}
+                          alt={post.title}
+                          fill
+                          className="object-cover rounded-lg"
+                        />
+                      </div>
+                      <div className="md:col-span-3 space-y-3">
+                        <div className="flex items-center space-x-2">
+                          <Badge variant="outline" className="text-xs">
+                            {post.category}
+                          </Badge>
+                          <span className="text-xs text-gray-500">{formatDate(post.publishedAt)}</span>
+                        </div>
+                        <h3 className="text-xl font-semibold hover:text-red-600 transition-colors">
+                          <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                        </h3>
+                        <p className="text-gray-600 line-clamp-2">{post.excerpt}</p>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-4 text-sm text-gray-500">
+                            <div className="flex items-center space-x-1">
+                              <User className="w-3 h-3" />
+                              <span>{post.author}</span>
+                            </div>
+                            <div className="flex items-center space-x-1">
+                              <Clock className="w-3 h-3" />
+                              <span>{post.readingTime} min read</span>
+                            </div>
+                          </div>
+                          <div className="flex flex-wrap gap-1">
+                            {post.tags.slice(0, 2).map((tag) => (
+                              <Badge key={tag} variant="secondary" className="text-xs">
+                                {tag}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-8">
+            {/* Search */}
+            <Card className="border-0 shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <Search className="w-5 h-5 text-red-600" />
+                  <span>Search Articles</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="relative">
+                  <Input placeholder="Search blog posts..." className="pr-10" />
+                  <Button size="sm" className="absolute right-1 top-1 h-8 w-8 p-0" variant="ghost">
+                    <Search className="w-4 h-4" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Latest Posts */}
+            <Card className="border-0 shadow-lg">
+              <CardHeader>
+                <CardTitle>Latest Posts</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {latestPosts.map((post) => (
+                  <div key={post.id} className="flex space-x-3">
+                    <div className="relative w-16 h-12 flex-shrink-0">
+                      <Image
+                        src={post.coverImage || "/placeholder.svg?height=48&width=64"}
+                        alt={post.title}
+                        fill
+                        className="object-cover rounded"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-medium line-clamp-2 hover:text-red-600 transition-colors">
+                        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                      </h4>
+                      <p className="text-xs text-gray-500 mt-1">{formatDate(post.publishedAt)}</p>
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            {/* Categories */}
+            <Card className="border-0 shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <Tag className="w-5 h-5 text-orange-600" />
+                  <span>Categories</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                {mockCategories.map((category) => (
+                  <Link
+                    key={category.id}
+                    href={`/blog/category/${category.slug}`}
+                    className="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    <span className="text-sm font-medium">{category.name}</span>
+                    <Badge variant="secondary" className="text-xs">
+                      {mockPosts.filter((p) => p.category === category.name && p.status === "published").length}
+                    </Badge>
+                  </Link>
+                ))}
+              </CardContent>
+            </Card>
+
+            {/* Newsletter Signup */}
+            <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-0">
+              <CardContent className="p-6">
+                <h3 className="font-semibold text-gray-900 mb-2">Stay Updated</h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  Get the latest trucking industry insights delivered to your inbox.
+                </p>
+                <div className="space-y-3">
+                  <Input placeholder="Your email address" />
+                  <Button className="w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700">
+                    Subscribe
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Footer */}
       <footer className="bg-gray-50 border-t">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Company Info */}
             <div>
               <Link href="/" className="flex items-center space-x-2 mb-4">
@@ -360,7 +374,7 @@ export default function BlogPage() {
                 </Link>
                 <Link href="#" className="text-gray-500 hover:text-gray-900">
                   <svg fill="currentColor" className="w-5 h-5" viewBox="0 0 24 24">
-                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.893-.957-2.178-1.555-3.594-1.555-2.71,0-4.92 2.211-4.92 4.92 0 .39.045.765.127 1.124C7.691 8.341 4.066 6.215 1.613 3.94c-.422.724-.665 1.566-.665 2.479 0 1.71 .87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.372 3.946 4.827-.413.111-.849.171-1.304.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.212 7.548 2.212 9.058 0 14.01-7.506 14.01-14.01 0-.213-.005-.426-.015-.637.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"></path>
+                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.893-.957-2.178-1.555-3.594-1.555-2.71,0-4.92 2.211-4.92 4.92 0 .39.045.765.127 1.124C7.691 8.341 4.066 6.215 1.613 3.94c-.422.724-.665 1.566-.665 2.479 0 1.71 .87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.372 3.946 4.827-.413.111-.849.171-1.304.171-.314 0-.615-.30-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.212 7.548 2.212 9.058 0 14.01-7.506 14.01-14.01 0-.213-.005-.426-.015-.637.961-.689 1.8-1.56 2.46-2.548l-.047-.20z"></path>
                   </svg>
                 </Link>
               </div>
@@ -393,6 +407,28 @@ export default function BlogPage() {
                 <li>
                   <Link href="/#contact" className="text-gray-600 hover:text-gray-900 transition-colors">
                     Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-4">Legal</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/privacy-policy" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms-of-service" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/cookie-policy" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Cookie Policy
                   </Link>
                 </li>
               </ul>
