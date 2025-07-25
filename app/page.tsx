@@ -37,10 +37,10 @@ export default function LandingPage() {
 
             <div className="flex items-center space-x-4">
               <Button variant="ghost" className="hidden sm:inline-flex">
-                Driver Login
+                Apply for Permits
               </Button>
               <Button className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700">
-                Get Permits Now
+                Call Us
               </Button>
               <Button variant="ghost" size="icon" className="md:hidden">
                 <Menu className="w-5 h-5" />
@@ -77,11 +77,11 @@ export default function LandingPage() {
                   size="lg"
                   className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700"
                 >
-                  Apply for Permits
+                  Call Us
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
                 <Button size="lg" variant="outline">
-                  View Pricing
+                  Request a Quote
                 </Button>
               </div>
 
