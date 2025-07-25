@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, CheckCircle, Star, Users, Globe, Menu, Truck, FileText } from "lucide-react"
+import { ArrowRight, CheckCircle, Star, Users, Globe, Menu, Truck, FileText, Phone, Mail, MapPin } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -377,9 +377,9 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="bg-gray-50 border-t">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Company Info */}
-            <div className="lg:col-span-2">
+            <div>
               <Link href="/" className="flex items-center space-x-2 mb-4">
                 <div className="w-8 h-8 bg-gradient-to-r from-red-600 to-orange-600 rounded-lg flex items-center justify-center">
                   <Truck className="w-5 h-5 text-white" />
@@ -436,9 +436,96 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Navigation Links */}
+            {/* Quick Links */}
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Navigation</h3>
+              <h3 className="font-semibold text-gray-900 mb-4">Quick Links</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/"\
+                  <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#services" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/request-a-quote" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Request a Quote
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#contact" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Services */}
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-4">Services</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Oversize Load Permits
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Overweight Load Permits
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Trip & Fuel Permits
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Annual Permits
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+                    24/7 Support
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-4">Contact Us</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start space-x-2">
+                  <MapPin className="w-4 h-4 text-gray-500 mt-1 flex-shrink-0" />
+                  <span className="text-gray-600 text-sm">123 Trucking Lane, Suite 100, Anytown, USA</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <Phone className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                  <span className="text-gray-600">(555) 123-4567</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <Mail className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                  <span className="text-gray-600">info@osowpermits.com</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="mt-12 pt-8 border-t border-gray-200 text-center">
+            <p className="text-gray-500">&copy; {new Date().getFullYear()} OSOWpermits. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
