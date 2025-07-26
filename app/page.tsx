@@ -116,8 +116,8 @@ export default function LandingPage() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-orange-500 rounded-3xl blur-3xl opacity-20"></div>
               <Image
-                src="/oversize-load-permit-documentation.webp"
-                alt="Oversize Load Permit Documentation"
+                src="/placeholder.svg?height=600&width=800"
+                alt="Truck Driver with Permits"
                 width={800}
                 height={600}
                 className="relative rounded-2xl shadow-2xl"
@@ -255,8 +255,8 @@ export default function LandingPage() {
             </div>
             <div className="relative">
               <Image
-                src="/oversize-truck.webp"
-                alt="Oversize Truck Transportation"
+                src="/placeholder.svg?height=500&width=600"
+                alt="Professional Truck Driver"
                 width={600}
                 height={500}
                 className="rounded-2xl shadow-xl"
