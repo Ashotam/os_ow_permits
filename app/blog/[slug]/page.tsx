@@ -1,11 +1,16 @@
+"use client"
+import { useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Truck, Calendar, Clock, User, ArrowLeft, Share2, Facebook, Twitter, Linkedin, Menu } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { mockPosts, formatDate, getRelatedPosts } from "@/lib/blog"
+import {  formatDate } from "@/lib/blog"
 import ReactMarkdown from "react-markdown"
+import { useBlogStore } from "../../store/useBlogStore" 
+import { useParams } from "next/navigation"
+import postcss from "postcss"
 
 interface BlogPostPageProps {
   params: {
@@ -14,8 +19,16 @@ interface BlogPostPageProps {
 }
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = mockPosts.find((p) => p.slug === params.slug && p.status === "published")
+     const { slug } = useParams() as { slug: string }
+     const { posts, fetchPosts, loading, error,getPostBySlug,getRelatedPosts } = useBlogStore()
+     const post = getPostBySlug(slug)
+     const relatedPosts = getRelatedPosts(post)
 
+  useEffect(() => {
+    if (posts.length === 0) {
+      fetchPosts()
+    }
+  }, [fetchPosts, posts.length])
   if (!post) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -32,7 +45,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     )
   }
 
-  const relatedPosts = getRelatedPosts(post)
 
   return (
     <div className="min-h-screen bg-gray-50">

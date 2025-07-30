@@ -8,21 +8,38 @@ import { Badge } from "@/components/ui/badge"
 import { Truck, FileText, Eye, Edit, Trash2, Plus, LogOut, BarChart3, Calendar, Clock } from "lucide-react"
 import Link from "next/link"
 import { getCurrentUser, logout } from "@/lib/auth"
-import { mockPosts, formatDate } from "@/lib/blog"
+import {  formatDate } from "@/lib/blog"
+import {useBlogStore} from "../../store/useBlogStore"
+
+interface User {
+  name: string
+  [key: string]: any
+}
 
 export default function AdminDashboardPage() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState<User | null>(null)
   const router = useRouter()
+  const { posts, fetchPosts,deletePost } = useBlogStore()
 
+  const handleDelete = async (postId: string) => {
+  console.log("delete")
+  const confirmDelete = window.confirm("Are you sure you want to delete this post?")
+  if (confirmDelete) {
+    await deletePost(postId)
+  }
+}
   useEffect(() => {
     const currentUser = getCurrentUser()
     if (!currentUser) {
       router.push("/admin")
     } else {
       setUser(currentUser)
+      fetchPosts()
     }
   }, [router])
-
+useEffect(()=>{
+  console.log(posts,"4444")
+},[posts])
   const handleLogout = () => {
     logout()
     router.push("/admin")
@@ -32,10 +49,8 @@ export default function AdminDashboardPage() {
     return <div>Loading...</div>
   }
 
-  const publishedPosts = mockPosts.filter((post) => post.status === "published")
-  const draftPosts = mockPosts.filter((post) => post.status === "draft")
-  const totalViews = 12543 // Mock data
-  const monthlyViews = 3421 // Mock data
+  const publishedPosts = posts.filter((post) => post.status === "published")
+  const draftPosts = posts.filter((post) => post.status === "draft")
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -78,7 +93,7 @@ export default function AdminDashboardPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Total Posts</p>
-                  <p className="text-3xl font-bold text-gray-900">{mockPosts.length}</p>
+                  <p className="text-3xl font-bold text-gray-900">{posts.length}</p>
                 </div>
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                   <FileText className="w-6 h-6 text-blue-600" />
@@ -115,19 +130,7 @@ export default function AdminDashboardPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-0 shadow-lg">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">Total Views</p>
-                  <p className="text-3xl font-bold text-purple-600">{totalViews.toLocaleString()}</p>
-                </div>
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <BarChart3 className="w-6 h-6 text-purple-600" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+         
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -148,9 +151,9 @@ export default function AdminDashboardPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {mockPosts.slice(0, 5).map((post) => (
+                  {posts.slice(0, 5).map((post) => (
                     <div
-                      key={post.id}
+                      key={post._id}
                       className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors"
                     >
                       <div className="flex-1 min-w-0">
@@ -177,12 +180,17 @@ export default function AdminDashboardPage() {
                             </Button>
                           </Link>
                         )}
-                        <Link href={`/admin/posts/${post.id}/edit`}>
+                        <Link href={`/admin/posts/${post._id}/edit`}>
                           <Button size="sm" variant="outline">
                             <Edit className="w-3 h-3" />
                           </Button>
                         </Link>
-                        <Button size="sm" variant="outline" className="text-red-600 hover:text-red-700 bg-transparent">
+                        <Button
+                         size="sm"
+                          variant="outline"
+                           className="text-red-600
+                            hover:text-red-700 bg-transparent" 
+                             onClick={() => handleDelete(post._id)}>
                           <Trash2 className="w-3 h-3" />
                         </Button>
                       </div>
@@ -263,26 +271,7 @@ export default function AdminDashboardPage() {
               </CardContent>
             </Card>
 
-            {/* Performance */}
-            <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-0">
-              <CardContent className="p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">This Month</h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">Page Views</span>
-                    <span className="font-semibold text-gray-900">{monthlyViews.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">New Posts</span>
-                    <span className="font-semibold text-gray-900">3</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">Avg. Read Time</span>
-                    <span className="font-semibold text-gray-900">6.3 min</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+           
           </div>
         </div>
       </div>

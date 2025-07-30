@@ -1,21 +1,34 @@
 "use client"
-import { PostForm } from "../postForm"
-import { useBlogStore } from "../../../store/useBlogStore"
-import { useRouter } from "next/navigation"
+
+import { useBlogStore } from "../../../../store/useBlogStore"
+import { PostForm } from "../../postForm"
+import { useParams, useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Truck, Eye, LogOut, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-export default function NewPostPage() {
-  const { createPost } = useBlogStore()
+export default function EditPostPage() {
+  const { id } = useParams()
+  const { posts, updatePost,fetchPosts } = useBlogStore()
   const router = useRouter()
+  const [post, setPost] = useState(null)
 
-  const handleCreate = async (data) => {
-    await createPost(data)
-    router.push("/admin/posts")
+  useEffect(() => {
+    const foundPost = posts.find(p => p._id === id)
+    if (foundPost) setPost(foundPost)
+  }, [posts, id])
+
+  const handleUpdate = async (data) => {
+   const { _id, ...updateData } = data
+  await updatePost(id as string, updateData)
+    await fetchPosts()
+  router.push("/admin/posts")
   }
 
-  return (
+  if (!post) return <div>Loading...</div>
+
+ return (
       <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="border-b bg-white shadow-sm">
@@ -46,11 +59,11 @@ export default function NewPostPage() {
             </Link>
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Create New Post</h1>
-              <p className="text-gray-600">Write and publish a new blog post</p>
+              <p className="text-gray-600">Edit and publish your blog post</p>
             </div>
           </div>
         </div>
- <PostForm onSubmit={handleCreate} />
+         <PostForm initialData={post} onSubmit={handleUpdate} />
       </div>
     </div>
   )

@@ -9,13 +9,26 @@ import { Badge } from "@/components/ui/badge"
 import { Truck, Search, Filter, Eye, Edit, Trash2, Plus, LogOut, Calendar, Clock, User, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { getCurrentUser, logout } from "@/lib/auth"
-import { mockPosts, formatDate } from "@/lib/blog"
-
+import {useBlogStore} from "../../store/useBlogStore"
+import {formatDate } from "../../../lib/blog"
 export default function AdminPostsPage() {
   const [user, setUser] = useState(null)
   const [searchQuery, setSearchQuery] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
+  const { posts,deletePost} = useBlogStore()
+
   const router = useRouter()
+
+   const handleLogout = () => {
+    logout()
+    router.push("/admin")
+  }
+const handleDelete = async (postId: string) => {
+  const confirmDelete = window.confirm("Are you sure you want to delete this post?")
+  if (confirmDelete) {
+    await deletePost(postId)
+  }
+}
 
   useEffect(() => {
     const currentUser = getCurrentUser()
@@ -26,16 +39,12 @@ export default function AdminPostsPage() {
     }
   }, [router])
 
-  const handleLogout = () => {
-    logout()
-    router.push("/admin")
-  }
-
+ 
   if (!user) {
     return <div>Loading...</div>
   }
 
-  const filteredPosts = mockPosts.filter((post) => {
+  const filteredPosts = posts.filter((post) => {
     const matchesSearch =
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
@@ -139,7 +148,7 @@ export default function AdminPostsPage() {
               ) : (
                 filteredPosts.map((post) => (
                   <div
-                    key={post.id}
+                    key={post._id}
                     className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors"
                   >
                     <div className="flex-1 min-w-0">
@@ -186,7 +195,7 @@ export default function AdminPostsPage() {
                           </Button>
                         </Link>
                       )}
-                      <Link href={`/admin/posts/${post.id}/edit`}>
+                      <Link href={`/admin/posts/${post._id}/edit`}>
                         <Button size="sm" variant="outline" title="Edit Post">
                           <Edit className="w-3 h-3" />
                         </Button>
@@ -196,6 +205,7 @@ export default function AdminPostsPage() {
                         variant="outline"
                         className="text-red-600 hover:text-red-700 hover:border-red-300 bg-transparent"
                         title="Delete Post"
+                         onClick={() => handleDelete(post._id)}
                       >
                         <Trash2 className="w-3 h-3" />
                       </Button>

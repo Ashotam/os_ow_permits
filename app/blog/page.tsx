@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -5,14 +6,19 @@ import { Badge } from "@/components/ui/badge"
 import { Search, Calendar, Clock, User, ArrowRight, Tag, Menu, Phone, Mail, MapPin } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { mockPosts, mockCategories, formatDate } from "@/lib/blog"
-
+import {  mockCategories, formatDate } from "@/lib/blog"
+import {useBlogStore} from "../store/useBlogStore"
+import { useEffect } from "react"
 export default function BlogPage() {
-  const publishedPosts = mockPosts.filter((post) => post.status === "published")
+  
+  const {posts,fetchPosts} = useBlogStore()
+  const publishedPosts = posts.filter((post) => post.status === "published")
   const featuredPost = publishedPosts[0]
   const recentPosts = publishedPosts.slice(1, 4)
   const latestPosts = publishedPosts.slice(0, 3)
-
+  useEffect(()=>{
+    fetchPosts()
+  },[])
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -126,7 +132,7 @@ export default function BlogPage() {
               <h2 className="text-2xl font-bold text-gray-900">Latest Articles</h2>
               <div className="grid md:grid-cols-2 gap-8">
                 {recentPosts.map((post) => (
-                  <Card key={post.id} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                  <Card key={post._id} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                     <div className="relative h-48">
                       <Image
                         src={post.coverImage || "/placeholder.svg?height=192&width=400"}
@@ -177,7 +183,7 @@ export default function BlogPage() {
               <h2 className="text-2xl font-bold text-gray-900">All Articles</h2>
               <div className="space-y-6">
                 {publishedPosts.map((post) => (
-                  <Card key={post.id} className="border-0 shadow-md hover:shadow-lg transition-shadow">
+                  <Card key={post._id} className="border-0 shadow-md hover:shadow-lg transition-shadow">
                     <div className="grid md:grid-cols-4 gap-6 p-6">
                       <div className="relative h-32 md:h-24">
                         <Image
@@ -252,7 +258,7 @@ export default function BlogPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 {latestPosts.map((post) => (
-                  <div key={post.id} className="flex space-x-3">
+                  <div key={post._id} className="flex space-x-3">
                     <div className="relative w-16 h-12 flex-shrink-0">
                       <Image
                         src={post.coverImage || "/placeholder.svg?height=48&width=64"}
@@ -289,7 +295,7 @@ export default function BlogPage() {
                   >
                     <span className="text-sm font-medium">{category.name}</span>
                     <Badge variant="secondary" className="text-xs">
-                      {mockPosts.filter((p) => p.category === category.name && p.status === "published").length}
+                      {posts.filter((p) => p.category === category.name && p.status === "published").length}
                     </Badge>
                   </Link>
                 ))}
