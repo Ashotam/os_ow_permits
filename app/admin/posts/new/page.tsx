@@ -50,7 +50,7 @@ export default function NewPostPage() {
             </div>
           </div>
         </div>
- <PostForm onSubmit={handleCreate} />
+           <PostForm onSubmit={handleCreate} />
       </div>
     </div>
   )

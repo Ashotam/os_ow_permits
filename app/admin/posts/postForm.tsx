@@ -42,6 +42,25 @@ export const PostForm = ({ initialData = {}, onSubmit, isLoading = false }: Post
   const handleRemoveTag = (tagToRemove: string) => {
     setTags(tags.filter((tag) => tag !== tagToRemove))
   }
+  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    const formData = new FormData()
+    formData.append("file", file)
+
+    const res = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    })
+
+    const data = await res.json()
+    if (res.ok) {
+      setCoverImage(data.url)
+    } else {
+      alert("Upload failed: " + data.error)
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -60,6 +79,7 @@ export const PostForm = ({ initialData = {}, onSubmit, isLoading = false }: Post
     }
     await onSubmit(postData)
   }
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -117,8 +137,18 @@ export const PostForm = ({ initialData = {}, onSubmit, isLoading = false }: Post
           </div>
 
           {/* Cover Image */}
-          <Input value={coverImage} onChange={(e) => setCoverImage(e.target.value)} placeholder="Cover image URL..." />
-          {coverImage && <img src={coverImage} alt="Cover preview" className="w-full h-32 object-cover mt-2 rounded-md" />}
+         
+      <div>
+        <Label htmlFor="cover">Cover Image</Label>
+        <Input type="file" accept="image/*" onChange={handleUpload} />
+        {coverImage && (
+          <img
+            src={coverImage}
+            alt="Cover preview"
+            className="w-full h-48 object-cover mt-2 rounded-lg border"
+          />
+        )}
+      </div>
 
           <Button type="submit" disabled={isLoading} className="w-full mt-4">
             <Save className="w-4 h-4 mr-2" />

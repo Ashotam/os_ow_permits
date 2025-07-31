@@ -18,7 +18,12 @@ export default function BlogPage() {
   const latestPosts = publishedPosts.slice(0, 3)
   useEffect(()=>{
     fetchPosts()
+    console.log(posts)
   },[])
+    useEffect(()=>{
+    
+    console.log(posts)
+  },[posts])
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
