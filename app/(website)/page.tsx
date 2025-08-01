@@ -1,66 +1,19 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, CheckCircle, Star, Users, Globe, Menu, Truck, FileText, Phone, Mail, MapPin } from "lucide-react"
+import { ArrowRight, CheckCircle, Star, Users, Globe, Menu, Truck, FileText, Phone, Mail, MapPin, X } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-
+import { useState } from "react"
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <Link href="/" className="flex items-center space-x-2">
-              <Image
-                src="/osow-logo-horizontal.webp"
-                alt="OSOW Permits Logo"
-                width={180}
-                height={60}
-                className="h-12 w-auto"
-              />
-            </Link>
-
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/#services" className="text-gray-600 hover:text-gray-900 transition-colors">
-                Services
-              </Link>
-              <Link href="/blog" className="text-gray-600 hover:text-gray-900 transition-colors">
-                Blog
-              </Link>
-              <Link href="/#permits" className="text-gray-600 hover:text-gray-900 transition-colors">
-                Permit Types
-              </Link>
-              <Link href="/#testimonials" className="text-gray-600 hover:text-gray-900 transition-colors">
-                Reviews
-              </Link>
-              <Link href="/#contact" className="text-gray-600 hover:text-gray-900 transition-colors">
-                Contact
-              </Link>
-            </nav>
-
-            <div className="flex items-center space-x-4">
-              <Link href="/request-a-quote">
-                <Button variant="ghost" className="hidden sm:inline-flex">
-                  Apply for Permits
-                </Button>
-              </Link>
-              <Button className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700">
-                Call Us
-              </Button>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="w-5 h-5" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
+   
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-red-50 via-white to-orange-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
@@ -113,13 +66,14 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative justify-self-center"  >
               <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-orange-500 rounded-3xl blur-3xl opacity-20"></div>
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="/placeholder.svg?height=
+                300&width=400"
                 alt="Truck Driver with Permits"
-                width={800}
-                height={600}
+                width={400}
+                height={300}
                 className="relative rounded-2xl shadow-2xl"
               />
             </div>

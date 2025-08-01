@@ -8,7 +8,7 @@ import Link from "next/link"
 import Image from "next/image"
 import {  formatDate } from "@/lib/blog"
 import ReactMarkdown from "react-markdown"
-import { useBlogStore } from "../../store/useBlogStore" 
+import { useBlogStore } from "../../../store/useBlogStore" 
 import { useParams } from "next/navigation"
 import postcss from "postcss"
 
