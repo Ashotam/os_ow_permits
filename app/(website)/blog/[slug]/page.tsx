@@ -224,7 +224,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               <h2 className="text-2xl font-bold text-gray-900 mb-8">Related Articles</h2>
               <div className="grid md:grid-cols-3 gap-8">
                 {relatedPosts.map((relatedPost) => (
-                  <Card key={relatedPost.id} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                  <Card key={relatedPost._id} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
                     <div className="relative h-48">
                       <Image
                         src={relatedPost.coverImage || "/placeholder.svg?height=192&width=400"}
