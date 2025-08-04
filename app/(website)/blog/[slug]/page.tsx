@@ -149,7 +149,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">{post.excerpt}</p>
 
               {/* Social Sharing */}
-              <div className="flex items-center space-x-4 mb-8 pb-8 border-b">
+              {/* <div className="flex items-center space-x-4 mb-8 pb-8 border-b">
                 <span className="text-sm font-medium text-gray-700">Share this article:</span>
                 <div className="flex space-x-2">
                   <Button size="sm" variant="outline" className="bg-transparent">
@@ -168,7 +168,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                     <Share2 className="w-4 h-4" />
                   </Button>
                 </div>
-              </div>
+              </div> */}
 
               {/* Article Content */}
               <div className="prose prose-lg max-w-none">
