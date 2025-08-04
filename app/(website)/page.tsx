@@ -213,7 +213,7 @@ export default function LandingPage() {
                 width={600}
                 height={500}
                 className="rounded-2xl shadow-xl"
-                priority
+                
               />
             </div>
           </div>
