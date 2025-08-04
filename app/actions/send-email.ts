@@ -43,7 +43,7 @@ async function sendEmailViaSMTP(validatedData: FormData) {
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #1e40af; border-bottom: 2px solid #1e40af; padding-bottom: 10px;">
-          New Quote Request - Go Go Permits
+          New Quote Request - OS OW Permits
         </h2>
         
         <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
@@ -109,7 +109,7 @@ async function sendEmailViaSMTP(validatedData: FormData) {
         
         <p>Dear ${validatedData.firstName},</p>
         
-        <p>Thank you for contacting Go Go Permits for your trucking permit needs. We have received your quote request and our permit specialists are already reviewing your information.</p>
+        <p>Thank you for contacting OS OW Permits for your trucking permit needs. We have received your quote request and our permit specialists are already reviewing your information.</p>
         
         <div style="background-color: #eff6ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
           <h3 style="color: #1e40af; margin-top: 0;">What happens next?</h3>
@@ -126,7 +126,7 @@ async function sendEmailViaSMTP(validatedData: FormData) {
         The Go Go Permits Team</p>
         
         <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 14px;">
-          <p>Go Go Permits - Fast, Fair, Affordable Trucking Permits</p>
+          <p>OS OW Permits - Fast, Fair, Affordable Trucking Permits</p>
           <p style="font-size: 12px; color: #9ca3af;">Operated by Go Go America LLC</p>
           <p style="margin-top: 10px;">
             7403 Beck Ave<br>
@@ -162,8 +162,12 @@ async function sendEmailViaSMTP(validatedData: FormData) {
       await transporter.verify()
       console.log("SMTP connection verified successfully")
     } catch (verifyError) {
-      console.log("SMTP verification failed, but continuing anyway:", verifyError.message)
-    }
+  if (verifyError instanceof Error) {
+    console.log("SMTP verification failed, but continuing anyway:", verifyError.message)
+  } else {
+    console.log("SMTP verification failed with unknown error:", verifyError)
+  }
+}
 
     // Send business notification email
     console.log("Sending business notification email...")
@@ -179,7 +183,7 @@ async function sendEmailViaSMTP(validatedData: FormData) {
     await transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to: validatedData.email,
-      subject: "Quote Request Received - Go Go Permits",
+      subject: "Quote Request Received - OS OW Permits",
       html: customerEmailHtml,
     })
 

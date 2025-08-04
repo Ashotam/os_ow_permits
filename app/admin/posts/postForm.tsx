@@ -100,7 +100,7 @@ export const PostForm = ({ initialData = {}, onSubmit, isLoading = false }: Post
         <div className="space-y-4">
           {/* Status */}
           <Label>Status</Label>
-          <Select value={status} onValueChange={setStatus}>
+          <Select value={status}  onValueChange={(value) => setStatus(value as "draft" | "published")}>
             <SelectTrigger><SelectValue /></SelectTrigger>
             <SelectContent>
               <SelectItem value="draft">Draft</SelectItem>

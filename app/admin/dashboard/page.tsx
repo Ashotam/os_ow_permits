@@ -22,7 +22,6 @@ export default function AdminDashboardPage() {
   const { posts, fetchPosts,deletePost } = useBlogStore()
 
   const handleDelete = async (postId: string) => {
-  console.log("delete")
   const confirmDelete = window.confirm("Are you sure you want to delete this post?")
   if (confirmDelete) {
     await deletePost(postId)

@@ -6,11 +6,24 @@ import Link from "next/link"
 import { Truck, Eye, LogOut, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+
+interface Post {
+  title: string
+  slug: string
+  content: string
+  excerpt?: string
+  author: string
+  category: string
+  tags?: string[]
+  coverImage?: string
+  publishedAt?: string
+}
+
 export default function NewPostPage() {
   const { createPost } = useBlogStore()
   const router = useRouter()
 
-  const handleCreate = async (data) => {
+  const handleCreate = async (data:Post) => {
     await createPost(data)
     router.push("/admin/posts")
   }

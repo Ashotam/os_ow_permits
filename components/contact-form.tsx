@@ -31,11 +31,11 @@ export function ContactForm() {
     additionalDetails: "",
   });
 
-  const handleInputChange = (name, value) => {
+  const handleInputChange = (name: keyof typeof formData, value: string) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setFormStatus({});
