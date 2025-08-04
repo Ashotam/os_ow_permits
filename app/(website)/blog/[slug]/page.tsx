@@ -9,11 +9,6 @@ import { User, Calendar, Clock, ArrowLeft } from "lucide-react"
 import ReactMarkdown from "react-markdown"
 import type { Metadata, ResolvingMetadata  } from "next"
 
-interface Props {
-  params: {
-    slug: string
-  }
-}
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
@@ -36,9 +31,9 @@ export async function generateMetadata(
   }
 }
 
-export default async function BlogPostPage({ params }: Props) {
-    const { slug } = await params
-  const post = await getPostBySlug(slug)
+export default async function BlogPostPage(props: { params: Promise<{ slug: string }> }) {
+   const { slug } = await props.params
+   const post = await getPostBySlug(slug)
 
   if (!post) return notFound()
 
