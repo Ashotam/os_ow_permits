@@ -2,9 +2,10 @@ import { NextRequest, NextResponse } from "next/server"
 import clientPromise from "@/lib/mongodb"
 import { ObjectId } from "mongodb"
 
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(req: NextRequest) {
   try {
-    const id = params.id
+    const url = new URL(req.url)
+    const id = url.pathname.split('/').pop()
     const body = await req.json()
     const client = await clientPromise
     const db = client.db("blog")
@@ -24,9 +25,11 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest) {
   try {
-    const id = params.id
+    
+    const url = new URL(req.url)
+    const id = url.pathname.split('/').pop()
     const client = await clientPromise
     const db = client.db("blog")
 

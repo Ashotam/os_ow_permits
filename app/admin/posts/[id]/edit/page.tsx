@@ -8,18 +8,19 @@ import Link from "next/link"
 import { Truck, Eye, LogOut, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import {BlogPost} from "@/lib/blog"
 export default function EditPostPage() {
   const { id } = useParams()
   const { posts, updatePost,fetchPosts } = useBlogStore()
   const router = useRouter()
-  const [post, setPost] = useState(null)
+  const [post, setPost] = useState<BlogPost|null>( null)
 
   useEffect(() => {
     const foundPost = posts.find(p => p._id === id)
     if (foundPost) setPost(foundPost)
   }, [posts, id])
 
-  const handleUpdate = async (data) => {
+  const handleUpdate = async (data:BlogPost) => {
    const { _id, ...updateData } = data
   await updatePost(id as string, updateData)
     await fetchPosts()

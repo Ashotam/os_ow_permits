@@ -8,11 +8,11 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Truck, Search, Filter, Eye, Edit, Trash2, Plus, LogOut, Calendar, Clock, User, ArrowLeft } from "lucide-react"
 import Link from "next/link"
-import { getCurrentUser, logout } from "@/lib/auth"
+import { getCurrentUser, logout,User as Admin } from "@/lib/auth"
 import {useBlogStore} from "../../store/useBlogStore"
 import {formatDate } from "../../../lib/blog"
 export default function AdminPostsPage() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState<Admin|null >(null)
   const [searchQuery, setSearchQuery] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
   const { posts,deletePost} = useBlogStore()
