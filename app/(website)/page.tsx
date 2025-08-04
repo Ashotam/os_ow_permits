@@ -21,7 +21,6 @@ export default function LandingPage() {
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                   Get Your Trip
                   <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
-                    {" "}
                     Permits Fast
                   </span>
                 </h1>
@@ -67,13 +66,14 @@ export default function LandingPage() {
 
             <div className="relative justify-self-center"  >
               <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-orange-500 rounded-3xl blur-3xl opacity-20"></div>
-              <Image
-                src="/placeholder.svg?height=
-                300&width=400"
-                alt="Truck Driver with Permits"
-                width={400}
-                height={300}
-                className="relative rounded-2xl shadow-2xl"
+             <Image
+               src="placeholder.svg"
+               alt="Truck Driver with Permits"
+               width={600}
+               height={500}
+               priority 
+               quality={75}
+               className="rounded-2xl shadow-xl"
               />
             </div>
           </div>
@@ -208,11 +208,12 @@ export default function LandingPage() {
             </div>
             <div className="relative">
               <Image
-                src="/placeholder.svg?height=500&width=600"
+                src="/placeholder.svg"
                 alt="Professional Truck Driver"
                 width={600}
                 height={500}
                 className="rounded-2xl shadow-xl"
+                priority
               />
             </div>
           </div>
