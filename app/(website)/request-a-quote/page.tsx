@@ -4,9 +4,8 @@ import type React from "react"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Shield, Phone, Mail, MapPin, CheckCircle, Menu } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
+import { Clock, Shield, Phone, Mail, MapPin, CheckCircle } from "lucide-react"
+
 import { ContactForm } from "@/components/contact-form"
 import { useState } from "react"
 

@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   title: "OSOWpermits - Professional Trucking Permit Services",
   description:
     "Fast, reliable trucking permit services for drivers nationwide. Get oversize, overweight, and trip permits processed quickly with 24/7 support.",
-  generator: "v0.dev",
   icons: {
     icon: "/favicon.ico",
   },

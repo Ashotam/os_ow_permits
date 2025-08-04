@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Menu, Phone, Mail, MapPin, ArrowLeft } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
+
 
 export default function PrivacyPolicyPage() {
   return (
