@@ -47,7 +47,7 @@ export default function Header() {
               <Link href="/request-a-quote">
                 <Button variant="ghost" className="hidden sm:inline-flex">Apply for Permits</Button>
               </Link>
-              <Link href="tel:+15551234567">
+              <Link href="tel:+18184756020">
                 <Button className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700">
                   Call Us
                 </Button>

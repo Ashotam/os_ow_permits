@@ -77,14 +77,15 @@ export default function RequestQuotePage() {
                     <Phone className="w-4 h-4 text-gray-500 flex-shrink-0" />
                     <div>
                       <p className="font-semibold text-gray-900">24/7 Hotline</p>
-                      <p className="text-sm text-gray-600">(555) 123-PERMIT</p>
+                      <span className="text-blue-500 underline hover:text-blue-700 cursor-pointer" >+1 (818) 475-6020</span>
+
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="w-4 h-4 text-gray-500 flex-shrink-0" />
                     <div>
                       <p className="font-semibold text-gray-900">Email Support</p>
-                      <p className="text-sm text-gray-600">quotes@osowpermits.com</p>
+                      <p className="text-sm text-gray-600">info@osowpermits.com</p>
                     </div>
                   </div>
                 </CardContent>

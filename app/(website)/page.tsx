@@ -19,7 +19,7 @@ export default function LandingPage() {
                 </Badge>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                   Get Your Trip 
-                  <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent ml-4">
+                  <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent ml-2">
                     Permits Fast
                   </span>
                 </h1>

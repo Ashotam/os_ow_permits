@@ -21,7 +21,7 @@ export default function Footer() {
               <p className="text-gray-600 mb-4">
                 Your trusted partner for all your trucking permit needs. Licensed and bonded in all 50 states.
               </p>
-              <div className="flex space-x-4">
+              {/* <div className="flex space-x-4">
                 <Link href="#" className="text-gray-500 hover:text-gray-900">
                   <svg
                     fill="currentColor"
@@ -65,7 +65,7 @@ export default function Footer() {
                     <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.893-.957-2.178-1.555-3.594-1.555-2.71,0-4.92 2.211-4.92 4.92 0 .39.045.765.127 1.124C7.691 8.341 4.066 6.215 1.613 3.94c-.422.724-.665 1.566-.665 2.479 0 1.71 .87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.372 3.946 4.827-.413.111-.849.171-1.304.171-.314 0-.615-.30-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.212 7.548 2.212 9.058 0 14.01-7.506 14.01-14.01 0-.213-.005-.426-.015-.637.961-.689 1.8-1.56 2.46-2.548l-.047-.20z"></path>
                   </svg>
                 </Link>
-              </div>
+              </div> */}
             </div>
 
             {/* Quick Links */}
@@ -128,7 +128,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 <li className="flex items-start space-x-2">
                   <MapPin className="w-4 h-4 text-gray-500 mt-1 flex-shrink-0" />
-                  <span className="text-gray-600 text-sm">123 Trucking Lane, Suite 100, Anytown, USA</span>
+                  <span className="text-gray-600 text-sm">7403 Beck Ave, North Hollywood, CA 91605</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <Phone className="w-4 h-4 text-gray-500 flex-shrink-0" />
