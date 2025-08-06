@@ -7,7 +7,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Truck, FileText, Eye, Edit, Trash2, Plus, LogOut,  Calendar, Clock } from "lucide-react"
 import Link from "next/link"
-import { getCurrentUser, logout } from "@/lib/auth"
 import {  formatDate } from "@/lib/blog"
 import {useBlogStore} from "../../store/useBlogStore"
 
@@ -27,22 +26,30 @@ export default function AdminDashboardPage() {
     await deletePost(postId)
   }
 }
-  useEffect(() => {
-    const currentUser = getCurrentUser()
-    if (!currentUser) {
+useEffect(() => {
+  const fetchUser = async () => {
+    try {
+      const res = await fetch("/api/auth/me")
+      if (!res.ok) {
+        router.push("/admin") 
+        return
+      }
+
+      const userData = await res.json()
+      setUser(userData)
+      fetchPosts() 
+    } catch (err) {
+      console.error("Failed to fetch user", err)
       router.push("/admin")
-    } else {
-      setUser(currentUser)
-      fetchPosts()
     }
-  }, [router])
-useEffect(()=>{
-  console.log(posts,"4444")
-},[posts])
-  const handleLogout = () => {
-    logout()
-    router.push("/admin")
   }
+
+  fetchUser()
+}, [])
+  const handleLogout = async () => {
+  await fetch("/api/auth/logout", { method: "POST" })
+  router.push("/admin")
+}
 
   if (!user) {
     return <div>Loading...</div>

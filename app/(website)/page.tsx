@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, CheckCircle, Star, Users, Globe, Menu, Truck, FileText, Phone, Mail, MapPin, X } from "lucide-react"
+import { ArrowRight, CheckCircle, Star, Users, Globe,  Truck, FileText} from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 export default function LandingPage() {

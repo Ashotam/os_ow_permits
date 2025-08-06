@@ -4,7 +4,9 @@ const nextConfig = {
   swcMinify: true, // enables faster + smaller JS bundles
   images: {
     formats: ['image/webp'], // WebP is smaller and supported on all modern browsers
-    // domains: ['yourdomain.com'], // allow optimized remote images if needed
+     domains: [
+      "dlnufmaanoefzzyf.public.blob.vercel-storage.com" 
+    ],
   },
   experimental: {
     scrollRestoration: true, // improves UX on back navigation

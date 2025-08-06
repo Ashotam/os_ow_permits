@@ -12,3 +12,11 @@ export async function getPostBySlug(slug: string) {
   const post = await db.collection("posts").findOne({ slug, status: "published" })
   return post
 }
+
+export async function getUserByEmail(email: string) {
+  const client = await clientPromise
+  const db = client.db("user")
+  const users = db.collection("admin")
+
+  return users.findOne({ userEmail: email })
+}

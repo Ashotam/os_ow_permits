@@ -11,7 +11,6 @@ import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Truck, LogIn, AlertCircle } from "lucide-react"
 import Link from "next/link"
-import { login } from "@/lib/auth"
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState("")
@@ -20,24 +19,33 @@ export default function AdminLoginPage() {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError("")
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+  setIsLoading(true)
+  setError("")
 
-    try {
-      const user = login(email, password)
-      if (user) {
-        router.push("/admin/dashboard")
-      } else {
-        setError("Invalid email or password")
-      }
-    } catch (err) {
-      setError("An error occurred during login")
-    } finally {
-      setIsLoading(false)
+  try {
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+
+    const data = await res.json()
+
+    if (res.ok) {
+      router.push("/admin/dashboard")
+    } else {
+      setError(data.error || "Login failed")
     }
+  } catch (err) {
+    setError("An error occurred during login")
+  } finally {
+    setIsLoading(false)
   }
+}
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

@@ -8,21 +8,17 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Truck, Search, Filter, Eye, Edit, Trash2, Plus, LogOut, Calendar, Clock, User, ArrowLeft } from "lucide-react"
 import Link from "next/link"
-import { getCurrentUser, logout,User as Admin } from "@/lib/auth"
+import { User as Admin } from "@/lib/auth"
 import {useBlogStore} from "../../store/useBlogStore"
 import {formatDate } from "../../../lib/blog"
 export default function AdminPostsPage() {
   const [user, setUser] = useState<Admin|null >(null)
   const [searchQuery, setSearchQuery] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
-  const { posts,deletePost} = useBlogStore()
+  const { posts,deletePost,fetchPosts} = useBlogStore()
 
   const router = useRouter()
 
-   const handleLogout = () => {
-    logout()
-    router.push("/admin")
-  }
 const handleDelete = async (postId: string) => {
   const confirmDelete = window.confirm("Are you sure you want to delete this post?")
   if (confirmDelete) {
@@ -31,15 +27,29 @@ const handleDelete = async (postId: string) => {
 }
 
   useEffect(() => {
-    const currentUser = getCurrentUser()
-    if (!currentUser) {
+  const fetchUser = async () => {
+    try {
+      const res = await fetch("/api/auth/me")
+      if (!res.ok) {
+        router.push("/admin") 
+        return
+      }
+      const userData = await res.json()
+      setUser(userData)
+      fetchPosts()
+    } catch (err) {
+      console.error("Failed to fetch user", err)
       router.push("/admin")
-    } else {
-      setUser(currentUser)
     }
-  }, [router])
+  }
 
- 
+  fetchUser()
+}, [])
+
+  const handleLogout = async () => {
+  await fetch("/api/auth/logout", { method: "POST" })
+  router.push("/admin")
+}
   if (!user) {
     return <div>Loading...</div>
   }
