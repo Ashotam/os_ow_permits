@@ -8,10 +8,9 @@ import Image from "next/image"
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
-   
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-red-50 via-white to-orange-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-24">
+        <div className="container mx-auto px-4 sm:px-2 lg:px-8 py-8 lg:py-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
@@ -19,8 +18,8 @@ export default function LandingPage() {
                   🚛 Fast & Reliable Permit Service
                 </Badge>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                  Get Your Trip
-                  <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+                  Get Your Trip 
+                  <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent ml-4">
                     Permits Fast
                   </span>
                 </h1>
@@ -66,15 +65,16 @@ export default function LandingPage() {
 
             <div className="relative justify-self-center"  >
               <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-orange-500 rounded-3xl blur-3xl opacity-20"></div>
-             <Image
-               src="placeholder.svg"
-               alt="Truck Driver with Permits"
-               width={600}
-               height={500}
-               priority 
-               quality={75}
-               className="rounded-2xl shadow-xl"
-              />
+            <Image
+              src="/oversize_load_permit_documentation.webp"
+              alt="Truck Driver with Permits"
+              width={600}
+              height={300}
+              priority 
+              quality={75}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="rounded-2xl shadow-xl"
+             />
             </div>
           </div>
         </div>
@@ -172,7 +172,7 @@ export default function LandingPage() {
       </section>
 
       {/* About Section */}
-      <section id="permits" className="py-20 bg-gray-50">
+      <section id="permits" className="py-8 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -207,13 +207,14 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="relative">
-              <Image
-                src="/placeholder.svg"
-                alt="Professional Truck Driver"
-                width={600}
-                height={500}
-                className="rounded-2xl shadow-xl"
-                
+             <Image
+               src="/oversize_truck.webp"
+               alt="Professional Truck Driver"
+               width={600}
+               height={300}
+               quality={75}
+               sizes="(max-width: 768px) 100vw, 50vw"
+               className="rounded-2xl shadow-xl"
               />
             </div>
           </div>
@@ -330,9 +331,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
-      
-    
     </div>
   )
 }

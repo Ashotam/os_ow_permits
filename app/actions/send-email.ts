@@ -90,10 +90,10 @@ async function sendEmailViaSMTP(validatedData: FormData) {
         }
 
         <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 14px;">
-          <p>This quote request was submitted through the Go Go Permits website.</p>
+          <p>This quote request was submitted through the  OW OS Permits website.</p>
           <p>Please respond within 1 hour as promised to the customer.</p>
           <p style="margin-top: 10px;">
-            <strong>Go Go America LLC</strong><br>
+            <strong>OW OS America LLC</strong><br>
             7403 Beck Ave<br>
             North Hollywood, CA 91605
           </p>
@@ -123,7 +123,7 @@ async function sendEmailViaSMTP(validatedData: FormData) {
         <p>If you have any urgent questions, please don't hesitate to call us at <strong>+1 (818) 475-6020</strong>.</p>
         
         <p>Best regards,<br>
-        The Go Go Permits Team</p>
+        The  OW OS Permits Team</p>
         
         <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 14px;">
           <p>OS OW Permits - Fast, Fair, Affordable Trucking Permits</p>
