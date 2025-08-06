@@ -2,10 +2,21 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
+import { sendPhoneNumber } from "@/app/actions/send-phone-number"
 import { ArrowRight, CheckCircle, Star, Users, Globe,  Truck, FileText} from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import PhoneForm from "@/components/phone-form"
 export default function LandingPage() {
+  async function handleSubmit(formData: FormData) {
+    "use server"
+    const phone = formData.get("phone")?.toString() || ""
+    try {
+      await sendPhoneNumber(phone)
+    } catch (error) {
+      console.error("Error sending phone:", error)
+    }
+  }
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -316,17 +327,12 @@ export default function LandingPage() {
               Join thousands of drivers who trust us with their permit needs. Get started today and experience the
               difference professional service makes.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-              <Input
-                placeholder="Enter your phone number"
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/70"
-              />
-              <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100">
-                Order a Call Back
-              </Button>
-            </div>
-            <p className="text-sm text-red-200">
-              Call us 24/7 at (555) 123-PERMIT or fill out the form above for instant quotes.
+            <PhoneForm/>
+            <p className="text-sm text-red-200" >
+              Call us 24/7 at <a href="tel:+1 (818) 475-6020">
+                   <span className="text-blue-300 underline hover:text-blue-500 cursor-pointer mx-1" >  +1 (818) 475-6020  </span>
+                  </a>
+               or fill out the form above for instant quotes.
             </p>
           </div>
         </div>
