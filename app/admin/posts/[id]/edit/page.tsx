@@ -18,6 +18,7 @@ export default function EditPostPage() {
   useEffect(() => {
     const foundPost = posts.find(p => p._id === id)
     if (foundPost) setPost(foundPost)
+      console.log(foundPost)
   }, [posts, id])
 
   const handleUpdate = async (data:BlogPost) => {

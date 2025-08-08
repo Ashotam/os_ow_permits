@@ -1,9 +1,8 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { sendPhoneNumber } from "@/app/actions/send-phone-number"
-import { ArrowRight, CheckCircle, Star, Users, Globe,  Truck, FileText} from "lucide-react"
+import { ArrowRight, CheckCircle, Star,FileText, Truck,Move,Route,Fuel, CalendarDays,BadgeCheck } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import PhoneForm from "@/components/phone-form"
@@ -91,96 +90,105 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <Badge variant="secondary" className="bg-orange-100 text-orange-700">
-              Our Services
-            </Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Complete Permit Solutions for Truckers</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              From single trip permits to annual registrations, we handle all your trucking permit needs with speed and
-              accuracy.
-            </p>
+{/* Services Section */}
+<section id="services" className="py-20 bg-white">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center space-y-4 mb-16">
+      <Badge variant="secondary" className="bg-orange-100 text-orange-700">
+        Our Services
+      </Badge>
+      <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+        Complete Permit Solutions for Truckers
+      </h2>
+      <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        From single trip permits to annual registrations, we handle all your trucking permit needs with speed and accuracy.
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      {/* 1 - Oversize / Overweight */}
+      <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+        <CardHeader>
+          <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+            <Truck className="w-6 h-6 text-red-600" />
           </div>
+          <CardTitle>Oversize / Overweight Permits</CardTitle>
+          <CardDescription>
+            Get permits for loads exceeding standard dimensions and weight limits across all states.
+          </CardDescription>
+        </CardHeader>
+      </Card>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                  <Truck className="w-6 h-6 text-red-600" />
-                </div>
-                <CardTitle>Oversize/Overweight Permits</CardTitle>
-                <CardDescription>
-                  Get permits for loads exceeding standard dimensions and weight limits across all states
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                  <FileText className="w-6 h-6 text-orange-600" />
-                </div>
-                <CardTitle>Trip Permits</CardTitle>
-                <CardDescription>
-                  Single and multi-trip permits for interstate and intrastate commercial vehicle operations
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                  <FileText className="w-6 h-6 text-red-600" />
-                </div>
-                <CardTitle>Fuel Permits (IFTA, IRP, etc.)</CardTitle>
-                <CardDescription>
-                  International Fuel Tax Agreement and International Registration Plan permits for multi-state
-                  operations
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                  <FileText className="w-6 h-6 text-orange-600" />
-                </div>
-                <CardTitle>Temporary Tax Permits</CardTitle>
-                <CardDescription>
-                  Short-term tax permits for temporary operations and special circumstances across jurisdictions
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                  <Globe className="w-6 h-6 text-red-600" />
-                </div>
-                <CardTitle>Multi-State Coverage</CardTitle>
-                <CardDescription>
-                  Comprehensive permit services across all 50 states with local expertise
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="w-6 h-6 text-orange-600" />
-                </div>
-                <CardTitle>Fleet Management</CardTitle>
-                <CardDescription>
-                  Dedicated account management for trucking companies and fleet operators
-                </CardDescription>
-              </CardHeader>
-            </Card>
+      {/* 2 - Superload */}
+      <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+        <CardHeader>
+          <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+            <Move className="w-6 h-6 text-orange-600" />
           </div>
-        </div>
-      </section>
+          <CardTitle>Superload Permits</CardTitle>
+          <CardDescription>
+            Specialized planning, routing, and clearances for extremely large or heavy loads beyond OS/OW limits.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+
+      {/* 3 - Trip Permits */}
+      <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+        <CardHeader>
+          <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+            <Route className="w-6 h-6 text-red-600" />
+          </div>
+          <CardTitle>Trip Permits</CardTitle>
+          <CardDescription>
+            Single and multi-trip permits for interstate and intrastate commercial vehicle operations.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+
+      {/* 4 - Fuel Permits */}
+      <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+        <CardHeader>
+          <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+            <Fuel className="w-6 h-6 text-orange-600" />
+          </div>
+          <CardTitle>Fuel Permits (IFTA & Temporary)</CardTitle>
+          <CardDescription>
+            IFTA licenses and temporary fuel permits to keep you compliant across multiple jurisdictions.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+
+      {/* 5 - Annual Permits */}
+      <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+        <CardHeader>
+          <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+            <CalendarDays className="w-6 h-6 text-red-600" />
+          </div>
+          <CardTitle>Annual Permit Services</CardTitle>
+          <CardDescription>
+            Year-round permits for repetitive routes and operations without constant renewals.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+
+      {/* 6 - Other Trucking-Related Permits */}
+      <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+        <CardHeader>
+          <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+            <BadgeCheck className="w-6 h-6 text-orange-600" />
+          </div>
+          <CardTitle>Other Trucking-Related Permits</CardTitle>
+          <CardDescription>
+            Temporary KYU, NY HUT, Oregon Weight-Mile, and other state-specific permits.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+
+    </div>
+  </div>
+</section>
+
 
       {/* About Section */}
       <section id="permits" className="py-8 bg-gray-50">

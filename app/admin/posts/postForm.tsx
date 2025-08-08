@@ -17,7 +17,8 @@ type PostFormProps = {
   isLoading?: boolean
 }
 
-export const PostForm = ({ initialData = {}, onSubmit, isLoading = false }: PostFormProps) => {
+export const 
+PostForm = ({ initialData = {}, onSubmit, isLoading = false }: PostFormProps) => {
   const router = useRouter()
 
   const [title, setTitle] = useState(initialData.title || "")
