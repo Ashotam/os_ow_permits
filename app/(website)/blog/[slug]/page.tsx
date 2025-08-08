@@ -7,8 +7,11 @@ import Link from "next/link"
 import Image from "next/image"
 import { User, Calendar, Clock, ArrowLeft } from "lucide-react"
 import ReactMarkdown from "react-markdown"
-import type { Metadata, ResolvingMetadata  } from "next"
+import DOMPurify from "isomorphic-dompurify"
+import type { Metadata, ResolvingMetadata } from "next"
 
+// helper: simple check if content looks like HTML
+const isHTML = (s: string) => /<\/?[a-z][\s\S]*>/i.test(s)
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
@@ -32,8 +35,8 @@ export async function generateMetadata(
 }
 
 export default async function BlogPostPage(props: { params: Promise<{ slug: string }> }) {
-   const { slug } = await props.params
-   const post = await getPostBySlug(slug)
+  const { slug } = await props.params
+  const post = await getPostBySlug(slug)
 
   if (!post) return notFound()
 
@@ -50,7 +53,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
         <article className="bg-white rounded-2xl shadow-lg overflow-hidden mt-8">
           {post.coverImage && (
             <div className="relative h-64 sm:h-96">
-              <Image src={post.coverImage} alt={post.title} fill className="object-cover" priority  />
+              <Image src={post.coverImage} alt={post.title} fill className="object-cover" priority />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
           )}
@@ -78,7 +81,17 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
             <p className="text-xl text-gray-600 mb-8">{post.excerpt}</p>
 
             <div className="prose prose-lg max-w-none">
-              <ReactMarkdown>{post.content}</ReactMarkdown>
+              {isHTML(post.content) ? (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(post.content, {
+                      ADD_ATTR: ["target", "rel"], // keep link attrs from TipTap
+                    }),
+                  }}
+                />
+              ) : (
+                <ReactMarkdown>{post.content}</ReactMarkdown>
+              )}
             </div>
 
             <div className="mt-12 pt-8 border-t">

@@ -10,7 +10,7 @@ import { Save, Plus, X } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Label } from "@/components/ui/label"
 import { mockCategories, generateSlug, calculateReadingTime } from "@/lib/blog"
-
+import BlogEditor from "@/components/blogEditor"
 type PostFormProps = {
   initialData?: any
   onSubmit: (postData: any) => Promise<void>
@@ -78,6 +78,7 @@ PostForm = ({ initialData = {}, onSubmit, isLoading = false }: PostFormProps) =>
       readingTime,
       publishedAt: status === "published" ? new Date().toISOString() : undefined,
     }
+    console.log(content,"content in admin")
     await onSubmit(postData)
   }
 
@@ -91,8 +92,11 @@ PostForm = ({ initialData = {}, onSubmit, isLoading = false }: PostFormProps) =>
           <p className="text-sm text-gray-500">URL: /blog/{slug}</p>
 
           {/* Content */}
-          <Textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="Content" rows={12} required />
-          <p className="text-sm text-gray-500">Estimated reading time: {readingTime} minutes</p>
+         <BlogEditor
+           value={content}
+           onChange={setContent}
+           placeholder="Write your post..."
+         />
 
           {/* Excerpt */}
           <Textarea value={excerpt} onChange={(e) => setExcerpt(e.target.value)} placeholder="Excerpt" rows={3} required />

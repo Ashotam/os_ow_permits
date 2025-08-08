@@ -137,7 +137,7 @@ export default function Header() {
 
             <div className="flex items-center space-x-4">
               <Link href="/request-a-quote">
-                <Button variant="ghost"  className="hidden sm:inline-flex bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 
+                <Button   className="hidden sm:inline-flex bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 
                text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200">Request a Quote</Button>
               </Link>
               <Link href="tel:+18184756020">
