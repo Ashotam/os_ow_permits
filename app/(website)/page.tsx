@@ -108,6 +108,7 @@ export default function LandingPage() {
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       
       {/* 1 - Oversize / Overweight */}
+      <Link href="permit-types/oversize-permits" className="block">
       <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
         <CardHeader>
           <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
@@ -119,9 +120,10 @@ export default function LandingPage() {
           </CardDescription>
         </CardHeader>
       </Card>
-
+      </Link>
       {/* 2 - Superload */}
-      <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+      <Link href="permit-types/superload" className="block">
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
         <CardHeader>
           <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
             <Move className="w-6 h-6 text-orange-600" />
@@ -132,8 +134,11 @@ export default function LandingPage() {
           </CardDescription>
         </CardHeader>
       </Card>
+      </Link>
+
 
       {/* 3 - Trip Permits */}
+      <Link href="permit-types/trip" className="block">
       <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
         <CardHeader>
           <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
@@ -145,9 +150,12 @@ export default function LandingPage() {
           </CardDescription>
         </CardHeader>
       </Card>
+      </Link>
+      
 
       {/* 4 - Fuel Permits */}
-      <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+       <Link href="permit-types/fuel" className="block">
+        <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
         <CardHeader>
           <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
             <Fuel className="w-6 h-6 text-orange-600" />
@@ -158,8 +166,11 @@ export default function LandingPage() {
           </CardDescription>
         </CardHeader>
       </Card>
+       </Link>
+     
 
       {/* 5 - Annual Permits */}
+      <Link href="permit-types/fuel" className="block">
       <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
         <CardHeader>
           <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
@@ -171,9 +182,12 @@ export default function LandingPage() {
           </CardDescription>
         </CardHeader>
       </Card>
+      </Link>
+      
 
       {/* 6 - Other Trucking-Related Permits */}
-      <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+      <Link href="permit-types/temporary-tax" className="block">
+        <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
         <CardHeader>
           <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
             <BadgeCheck className="w-6 h-6 text-orange-600" />
@@ -184,7 +198,7 @@ export default function LandingPage() {
           </CardDescription>
         </CardHeader>
       </Card>
-
+      </Link>
     </div>
   </div>
 </section>
