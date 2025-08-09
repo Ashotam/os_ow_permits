@@ -43,17 +43,21 @@ export default async function BlogPage() {
               <div className="absolute bottom-6 left-6 right-6 text-white">
                 <Badge className="bg-red-600 hover:bg-red-700 mb-3">Featured</Badge>
                 <h2 className="text-3xl font-bold">{featuredPost.title}</h2>
-                <p className="text-sm">{featuredPost.excerpt}</p>
+                <p className="text-sm">
+                  {featuredPost.excerpt?.length > 120
+                   ? featuredPost.excerpt.slice(0, 100) + "..."
+                       : featuredPost.excerpt}
+                       </p>
                 <div className="flex items-center space-x-4 text-sm">
                   <span><User className="inline w-4 h-4" /> {featuredPost.author}</span>
                   <span><Calendar className="inline w-4 h-4" /> {formatDate(featuredPost.publishedAt)}</span>
                 </div>
               </div>
             </div>
-            <CardContent>
+            <CardContent className="grid place-items-center my-3">
               <Link href={`/blog/${featuredPost.slug}`}>
                 <Button className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700">
-                  Read Full Article <ArrowRight className="ml-2 w-4 h-4" />
+                  Read Full Article <ArrowRight className="ml-2 w-4 h-4 " />
                 </Button>
               </Link>
             </CardContent>
